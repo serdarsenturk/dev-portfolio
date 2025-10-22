@@ -1,55 +1,68 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Mail, Send, Github, Linkedin, MessageSquare, CheckCircle2 } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  CheckCircle2,
+  Github,
+  Linkedin,
+  Mail,
+  MessageSquare,
+  Send,
+} from "lucide-react";
+import { useState } from "react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const onMessageSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setIsSubmitting(false);
+    setIsSubmitted(true);
 
-    // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", message: "" })
-    }, 3000)
-  }
+      setIsSubmitted(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 3000);
+  };
 
   return (
     <>
-      <section id="contact" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section
+        id="contact"
+        className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="space-y-3 mb-10 text-center animate-blur-in">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
               <MessageSquare className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Let&apos;s Connect</span>
+              <span className="text-sm font-medium text-primary">
+                Let&apos;s Connect
+              </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Get In Touch</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              Get In Touch
+            </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              I&apos;m always open to discussing new projects, creative ideas, or opportunities.
+              I&apos;m always open to discussing new projects, creative ideas,
+              or opportunities.
             </p>
           </div>
 
@@ -63,7 +76,9 @@ export function ContactSection() {
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-muted-foreground mb-0.5">Email</p>
+                    <p className="text-xs font-medium text-muted-foreground mb-0.5">
+                      Email
+                    </p>
                     <a
                       href="mailto:serdarsenturk@windowslive.com"
                       className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
@@ -76,7 +91,9 @@ export function ContactSection() {
 
               {/* Social Links Card */}
               <Card className="p-4 border-primary/10 bg-gradient-to-br from-card to-card/50">
-                <p className="text-xs font-medium text-muted-foreground mb-3">Connect with me</p>
+                <p className="text-xs font-medium text-muted-foreground mb-3">
+                  Connect with me
+                </p>
                 <div className="flex gap-2">
                   {[
                     {
@@ -115,7 +132,10 @@ export function ContactSection() {
               {/* Info Card */}
               <Card className="p-4 border-primary/10 bg-gradient-to-br from-primary/5 to-accent/5">
                 <p className="text-xs leading-relaxed text-muted-foreground">
-                  <span className="font-semibold text-foreground">Response time:</span> Usually within 24 hours
+                  <span className="font-semibold text-foreground">
+                    Response time:
+                  </span>{" "}
+                  Usually within 24 hours
                 </p>
               </Card>
             </div>
@@ -129,14 +149,18 @@ export function ContactSection() {
                       <CheckCircle2 className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold mb-1">Message Sent!</h3>
-                      <p className="text-sm text-muted-foreground">I&apos;ll get back to you soon.</p>
+                      <h3 className="text-lg font-semibold mb-1">
+                        Message Sent!
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        I&apos;ll get back to you soon.
+                      </p>
                     </div>
                   </div>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={onMessageSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-sm font-medium">
@@ -146,7 +170,9 @@ export function ContactSection() {
                       id="name"
                       placeholder="John Doe"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(event: any) =>
+                        setFormData({ ...formData, name: event.target.value })
+                      }
                       className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50"
                       required
                       disabled={isSubmitting}
@@ -161,7 +187,9 @@ export function ContactSection() {
                       type="email"
                       placeholder="john@example.com"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(event: any) =>
+                        setFormData({ ...formData, email: event.target.value })
+                      }
                       className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50"
                       required
                       disabled={isSubmitting}
@@ -177,7 +205,9 @@ export function ContactSection() {
                     placeholder="Tell me about your project or just say hi..."
                     rows={5}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(event: any) =>
+                      setFormData({ ...formData, message: event.target.value })
+                    }
                     className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 resize-none"
                     required
                     disabled={isSubmitting}
@@ -209,13 +239,20 @@ export function ContactSection() {
       <footer className="relative border-t border-border/50 bg-gradient-to-b from-background to-muted/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p className="animate-fade-in">© {new Date().getFullYear()} Serdar Senturk. All rights reserved.</p>
-            <div className="flex items-center gap-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              <span>Built with Next.js & shadcn/ui</span>
+            <p className="animate-fade-in">
+              © {new Date().getFullYear()} Serdar Senturk. All rights reserved.
+            </p>
+            <div
+              className="flex items-center gap-4 animate-fade-in"
+              style={{ animationDelay: "0.1s" }}
+            >
               <div className="flex gap-2">
                 {[
                   { icon: Github, href: "https://github.com/serdarsenturk" },
-                  { icon: Linkedin, href: "https://www.linkedin.com/in/serdarsenturk" },
+                  {
+                    icon: Linkedin,
+                    href: "https://www.linkedin.com/in/serdarsenturk",
+                  },
                   { icon: Mail, href: "mailto:serdarsenturk@windowslive.com" },
                 ].map(({ icon: Icon, href }, i) => (
                   <a
@@ -234,5 +271,5 @@ export function ContactSection() {
         </div>
       </footer>
     </>
-  )
+  );
 }

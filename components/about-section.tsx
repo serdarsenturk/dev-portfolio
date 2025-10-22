@@ -1,19 +1,38 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Code2, Palette, Zap, Users } from "lucide-react"
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Code2, Palette, Users, Zap } from "lucide-react";
 
 export function AboutSection() {
   const skillCategories = [
     {
       category: "Frontend & Mobile",
-      skills: ["Next.js", "React", "React Native", "Expo", "Angular", "AngularJS", "TypeScript", "JavaScript"],
+      skills: [
+        "Next.js",
+        "React",
+        "React Native",
+        "Expo",
+        "Angular",
+        "AngularJS",
+        "TypeScript",
+        "JavaScript",
+      ],
       featured: true,
     },
     {
       category: "Backend & APIs",
-      skills: ["Python", "Flask", "FastAPI", "C#", ".NET Core", "ASP.NET Core", "Java", "Spring", "Node.js"],
+      skills: [
+        "Python",
+        "Flask",
+        "FastAPI",
+        "C#",
+        ".NET Core",
+        "ASP.NET Core",
+        "Java",
+        "Spring",
+        "Node.js",
+      ],
       featured: true,
     },
     {
@@ -30,35 +49,48 @@ export function AboutSection() {
     },
     {
       category: "Methodologies",
-      skills: ["Microservices", "Distributed Systems", "SOLID", "Design Patterns", "TDD"],
+      skills: [
+        "Microservices",
+        "Distributed Systems",
+        "SOLID",
+        "Design Patterns",
+        "TDD",
+      ],
     },
-  ]
+  ];
 
   const highlights = [
     {
       icon: Code2,
       title: "Clean Code",
-      description: "Writing maintainable, scalable code following OOP and SOLID principles.",
+      description:
+        "Writing maintainable, scalable code following OOP and SOLID principles.",
     },
     {
       icon: Zap,
       title: "Performance",
-      description: "Building high-performance backend systems and distributed applications.",
+      description:
+        "Building high-performance backend systems and distributed applications.",
     },
     {
       icon: Palette,
       title: "Full-Stack",
-      description: "Experience in both backend (.NET, Spring) and frontend (Angular, React) development.",
+      description:
+        "Experience in both backend (.NET, Spring) and frontend (Angular, React) development.",
     },
     {
       icon: Users,
       title: "Collaboration",
-      description: "Working effectively in Agile teams with CI/CD and modern development practices.",
+      description:
+        "Working effectively in Agile teams with CI/CD and modern development practices.",
     },
-  ]
+  ];
 
   return (
-    <section id="about" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative">
+    <section
+      id="about"
+      className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative"
+    >
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         <div
           className="absolute top-1/2 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse"
@@ -72,9 +104,11 @@ export function AboutSection() {
             About Me
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl text-pretty">
-            I graduated with a degree in Computer Engineering in September 2022 and have been passionate about software
-            and technology since childhood. With 3 years of work experience in backend development, I specialize in
-            building scalable and reliable applications using Object-Oriented Design and SOLID principles.
+            I graduated with a degree in Computer Engineering in September 2022
+            and have been passionate about software and technology since
+            childhood. With 3 years of work experience in backend development, I
+            specialize in building scalable and reliable applications using
+            Object-Oriented Design and SOLID principles.
           </p>
         </div>
 
@@ -126,19 +160,31 @@ export function AboutSection() {
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
                     {category.skills.map((skill, skillIndex) => {
-                      const isHighlighted = ["Next.js", "Python", "Flask", "React Native", "Expo"].includes(skill)
+                      const isHighlighted = [
+                        "Next.js",
+                        "Python",
+                        "Flask",
+                        "React Native",
+                        "Expo",
+                      ].includes(skill);
                       return (
                         <Badge
                           key={skill}
                           variant="secondary"
                           className={`text-[11px] px-2.5 py-1 rounded-full font-medium bg-secondary/60 dark:bg-secondary/40 text-secondary-foreground border border-border/50 hover:border-primary hover:bg-primary hover:text-primary-foreground dark:hover:text-primary-foreground hover:scale-110 hover:shadow-md hover:shadow-primary/20 transition-all duration-300 animate-fade-in cursor-default ${
-                            isHighlighted ? "ring-1 ring-primary/30 font-semibold" : ""
+                            isHighlighted
+                              ? "ring-1 ring-primary/30 font-semibold"
+                              : ""
                           }`}
-                          style={{ animationDelay: `${categoryIndex * 0.15 + skillIndex * 0.05}s` }}
+                          style={{
+                            animationDelay: `${
+                              categoryIndex * 0.15 + skillIndex * 0.05
+                            }s`,
+                          }}
                         >
                           {skill}
                         </Badge>
-                      )
+                      );
                     })}
                   </div>
                 </div>
@@ -148,5 +194,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

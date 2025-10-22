@@ -16,16 +16,34 @@ import { useEffect, useState } from "react";
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Software Developer";
+  const [typedJobTitle, setTypedJobTitle] = useState("");
+  const developerTitle = "Serdar Senturk - Software Developer";
+
+  const contactsOptions = [
+    {
+      icon: Github,
+      href: "https://github.com/serdarsenturk",
+      label: "GitHub",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/serdarsenturk",
+      label: "LinkedIn",
+    },
+    {
+      icon: Mail,
+      href: "mailto:serdarsenturk@windowslive.com",
+      label: "Email",
+    },
+  ];
 
   useEffect(() => {
     setIsVisible(true);
 
     let index = 0;
     const typingInterval = setInterval(() => {
-      if (index <= fullText.length) {
-        setTypedText(fullText.slice(0, index));
+      if (index <= developerTitle.length) {
+        setTypedJobTitle(developerTitle.slice(0, index));
         index++;
       } else {
         clearInterval(typingInterval);
@@ -70,9 +88,9 @@ export function HeroSection() {
               </Badge>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight text-balance">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-balance">
               <span className="inline-block bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                {typedText}
+                {typedJobTitle}
               </span>
               <span className="animate-pulse text-primary">|</span>
             </h1>
@@ -129,23 +147,7 @@ export function HeroSection() {
               className="flex gap-3 pt-2 animate-fade-in-up"
               style={{ animationDelay: "0.5s" }}
             >
-              {[
-                {
-                  icon: Github,
-                  href: "https://github.com/serdarsenturk",
-                  label: "GitHub",
-                },
-                {
-                  icon: Linkedin,
-                  href: "https://www.linkedin.com/in/serdarsenturk",
-                  label: "LinkedIn",
-                },
-                {
-                  icon: Mail,
-                  href: "mailto:serdarsenturk@windowslive.com",
-                  label: "Email",
-                },
-              ].map(({ icon: Icon, href, label }) => (
+              {contactsOptions.map(({ icon: Icon, href, label }) => (
                 <div key={label} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-lg blur-md opacity-0 group-hover:opacity-60 transition-all duration-500" />
                   <Button
@@ -163,19 +165,21 @@ export function HeroSection() {
             </div>
           </div>
 
+          {/* Terminal section */}
           <div
             className={`relative ${
               isVisible ? "animate-scale-in" : "opacity-0"
-            } hidden lg:block`}
+            } lg:block`}
             style={{ animationDelay: "0.3s" }}
           >
-            <div className="relative w-full aspect-square">
+            <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 rounded-3xl blur-3xl animate-gradient bg-[length:200%_auto]" />
               <div
                 className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-primary/20 to-accent/20 rounded-3xl blur-2xl animate-gradient bg-[length:200%_auto]"
                 style={{ animationDelay: "1s", animationDirection: "reverse" }}
               />
 
+              {/* Terminal corner badges */}
               <div className="absolute -top-4 -right-4 p-3 bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl animate-float shadow-xl hover:shadow-primary/30 transition-all duration-300 group glass-card">
                 <Code2 className="h-6 w-6 text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform" />
               </div>
@@ -187,8 +191,9 @@ export function HeroSection() {
               </div>
 
               <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl hover:shadow-primary/20 transition-all duration-500 group glass-card">
-                <div className="absolute -inset-[1px] bg-gradient-to-br from-primary via-accent to-primary rounded-3xl opacity-0 group-hover:opacity-50 blur-sm transition-all duration-500 -z-10 animate-gradient bg-[length:200%_auto]" />
+                <div className="absolute -inset-[1px] bg-gradient-to-br from-primary via-accent to-primary rounded-3xl opacity-0 group-hover:opacity-10 blur-sm transition-all duration-500 -z-10 animate-gradient bg-[length:200%_auto]" />
 
+                {/* Terminal window icons */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-3 h-3 rounded-full bg-destructive animate-pulse shadow-lg shadow-destructive/50" />
                   <div

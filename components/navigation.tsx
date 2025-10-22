@@ -52,7 +52,10 @@ export function Navigation() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
-          <a href="#" className="group relative flex items-center gap-2 perspective-1000">
+          <a
+            href="#"
+            className="group relative flex items-center gap-2 perspective-1000"
+          >
             {/* Icon container with gradient background */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-lg blur-md opacity-50 group-hover:opacity-100 transition-all duration-500" />
@@ -72,10 +75,10 @@ export function Navigation() {
             <span className="absolute inset-0 blur-xl bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse-glow" />
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Navigation */}
           <div className="hidden md:flex items-center gap-2">
             {navItems.map((item, index) => {
-              const isActive = activeSection === item.href.slice(1)
+              const isActive = activeSection === item.href.slice(1);
               return (
                 <a
                   key={item.label}
@@ -85,7 +88,9 @@ export function Navigation() {
                 >
                   <span
                     className={`relative z-10 transition-all duration-300 ${
-                      isActive ? "text-primary font-semibold" : "text-muted-foreground group-hover:text-foreground"
+                      isActive
+                        ? "text-primary font-semibold"
+                        : "text-muted-foreground group-hover:text-foreground"
                     }`}
                   >
                     {item.label}
@@ -94,14 +99,16 @@ export function Navigation() {
                   {/* Active indicator with gradient */}
                   <span
                     className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r from-primary via-accent to-primary transition-all duration-500 ${
-                      isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                      isActive
+                        ? "w-full opacity-100"
+                        : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
                     }`}
                   />
 
                   {/* Hover background effect */}
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-lg" />
                 </a>
-              )
+              );
             })}
 
             <div className="relative ml-4 group">
@@ -123,7 +130,10 @@ export function Navigation() {
             </div>
 
             <div className="relative ml-2">
-              <Badge variant="secondary" className="gap-1.5 relative overflow-hidden group/badge">
+              <Badge
+                variant="secondary"
+                className="gap-1.5 relative overflow-hidden group/badge"
+              >
                 <span className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 animate-gradient bg-[length:200%_auto]" />
                 <Sparkles className="h-3 w-3 relative z-10 animate-pulse" />
                 <span className="relative z-10">Available</span>
@@ -165,7 +175,10 @@ export function Navigation() {
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
                 </a>
               ))}
-              <Button size="sm" className="w-full mt-2 group relative overflow-hidden">
+              <Button
+                size="sm"
+                className="w-full mt-2 group relative overflow-hidden"
+              >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <Download className="h-4 w-4 group-hover:animate-bounce-subtle" />
                   Resume
@@ -181,5 +194,5 @@ export function Navigation() {
         )}
       </div>
     </nav>
-  )
+  );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,10 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
 
 export function ProjectsSection() {
   const projects = [
@@ -37,7 +36,14 @@ export function ProjectsSection() {
       description:
         "Retro tool backend application for agile teams to conduct retrospective meetings. Built with Python and modern backend practices.",
       image: "/agile-retrospective-tool-interface.jpg",
-      technologies: ["Python", "FastAPI", "PostgreSQL"],
+      technologies: [
+        "Python",
+        "JavaScript",
+        "Flask",
+        "PostgreSQL",
+        "NextJS",
+        "Auth0",
+      ],
       github: "https://github.com/serdarsenturk/easyretrospective",
       demo: "https://github.com/serdarsenturk/easyretrospective",
     },
@@ -87,7 +93,7 @@ export function ProjectsSection() {
 
               <div className="relative overflow-hidden aspect-video bg-muted/50">
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                <Image
+                <img
                   src={project.image || "/placeholder.svg"}
                   className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
                   alt={project.title}
