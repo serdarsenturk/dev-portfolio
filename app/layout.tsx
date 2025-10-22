@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Serdar Senturk - Developer",
   description:
     "Personal portfolio of Serdar Senturk, a creative developer crafting beautiful digital experiences.",
+  viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({

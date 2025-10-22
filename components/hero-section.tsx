@@ -4,63 +4,55 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  ANIMATION_DELAYS,
+  CONTACT_OPTIONS,
+  DEVELOPER_INFO,
+  SCROLL_BEHAVIOR,
+  SECTION_IDS,
+} from "@/lib/constants";
+import {
   ArrowDown,
-  Code2,
   Github,
   Linkedin,
   Mail,
-  Sparkles,
-  Terminal,
+  Sparkles
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [typedJobTitle, setTypedJobTitle] = useState("");
-  const developerTitle = "Serdar Senturk - Software Developer";
-
-  const contactsOptions = [
-    {
-      icon: Github,
-      href: "https://github.com/serdarsenturk",
-      label: "GitHub",
-    },
-    {
-      icon: Linkedin,
-      href: "https://www.linkedin.com/in/serdarsenturk",
-      label: "LinkedIn",
-    },
-    {
-      icon: Mail,
-      href: "mailto:serdarsenturk@windowslive.com",
-      label: "Email",
-    },
-  ];
 
   useEffect(() => {
     setIsVisible(true);
 
-    let index = 0;
+    let currentIndex = 0;
     const typingInterval = setInterval(() => {
-      if (index <= developerTitle.length) {
-        setTypedJobTitle(developerTitle.slice(0, index));
-        index++;
+      if (currentIndex <= DEVELOPER_INFO.TITLE.length) {
+        setTypedJobTitle(DEVELOPER_INFO.TITLE.slice(0, currentIndex));
+        currentIndex++;
       } else {
         clearInterval(typingInterval);
       }
-    }, 100);
+    }, ANIMATION_DELAYS.TYPING_INTERVAL);
 
     return () => clearInterval(typingInterval);
   }, []);
 
-  const scrollToProjects = () => {
-    const projectsSection = document.getElementById("projects");
-    projectsSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const handleScrollToProjects = () => {
+    const projectsSection = document.getElementById(SECTION_IDS.PROJECTS);
+    projectsSection?.scrollIntoView({
+      behavior: SCROLL_BEHAVIOR.SMOOTH,
+      block: SCROLL_BEHAVIOR.BLOCK_START,
+    });
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById(SECTION_IDS.CONTACT);
+    contactSection?.scrollIntoView({
+      behavior: SCROLL_BEHAVIOR.SMOOTH,
+      block: SCROLL_BEHAVIOR.BLOCK_START,
+    });
   };
 
   return (
@@ -69,34 +61,41 @@ export function HeroSection() {
       data-observe
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
           <div
-            className={`space-y-4 ${
+            className={`space-y-4 sm:space-y-6 ${
               isVisible ? "animate-blur-in" : "opacity-0"
             }`}
           >
             <div className="relative w-fit group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-md opacity-50 group-hover:opacity-100 transition-all duration-500 animate-gradient bg-[length:200%_auto]" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 via-accent/50 to-primary/50 dark:from-primary dark:via-accent dark:to-primary rounded-full blur-md opacity-50 group-hover:opacity-100 transition-all duration-500 animate-gradient bg-[length:200%_auto]" />
               <Badge
                 variant="secondary"
-                className="relative gap-2 animate-scale-in bg-card/80 backdrop-blur-sm border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 shadow-lg"
+                className="relative gap-2 animate-scale-in bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/30 dark:border-white/20 hover:border-white/40 dark:hover:border-white/30 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 shadow-lg shadow-black/5 dark:shadow-black/20"
               >
                 <Sparkles className="h-3.5 w-3.5 animate-pulse text-primary" />
-                <span className="animate-text-shimmer font-medium">
+                <span className="animate-text-shimmer font-medium text-sm sm:text-base">
                   Available for work
                 </span>
               </Badge>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-balance">
-              <span className="inline-block bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                {typedJobTitle}
-              </span>
-              <span className="animate-pulse text-primary">|</span>
-            </h1>
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
+                <span className="inline-block bg-gradient-to-r from-foreground via-primary to-foreground dark:from-foreground dark:via-accent dark:to-foreground bg-clip-text text-transparent">
+                  Serdar Senturk
+                </span>
+              </h1>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-balance">
+                <span className="inline-block bg-gradient-to-r from-primary to-accent dark:from-primary dark:to-accent bg-clip-text text-transparent">
+                  {typedJobTitle}
+                </span>
+                <span className="animate-pulse text-primary ml-1">|</span>
+              </h2>
+            </div>
 
             <p
-              className="text-lg sm:text-xl text-muted-foreground text-pretty animate-fade-in-up"
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground text-pretty animate-fade-in-up font-medium"
               style={{ animationDelay: "0.2s" }}
             >
               Building scalable and reliable applications using Object-Oriented
@@ -104,7 +103,7 @@ export function HeroSection() {
             </p>
 
             <p
-              className="text-sm sm:text-base text-muted-foreground leading-relaxed animate-fade-in-up"
+              className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}
             >
               Computer Engineering graduate with 3 years of experience in
@@ -114,139 +113,74 @@ export function HeroSection() {
             </p>
 
             <div
-              className="flex flex-wrap gap-3 pt-2 animate-fade-in-up"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 animate-fade-in-up"
               style={{ animationDelay: "0.4s" }}
             >
               <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur opacity-50 group-hover:opacity-100 transition-all duration-500 animate-gradient bg-[length:200%_auto]" />
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-lg opacity-0 group-hover:opacity-75 transition-all duration-500" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 via-accent/50 to-primary/50 dark:from-primary dark:via-accent dark:to-primary rounded-xl blur-lg opacity-60 group-hover:opacity-100 transition-all duration-500 animate-gradient bg-[length:200%_auto]" />
                 <Button
                   size="lg"
-                  onClick={scrollToProjects}
-                  className="relative group/btn overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 transition-ease-out-expo shadow-lg hover:shadow-xl hover:shadow-primary/30"
+                  onClick={handleScrollToProjects}
+                  className="relative group/btn overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500 shadow-2xl hover:shadow-primary/40 px-8 py-4 text-lg font-semibold"
                 >
-                  <span className="relative z-10 flex items-center gap-2 text-white dark:text-white">
+                  <span className="relative z-10 flex items-center gap-3 text-white">
                     View Projects
-                    <ArrowDown className="h-4 w-4 group-hover/btn:translate-y-1 transition-transform" />
+                    <ArrowDown className="h-5 w-5 group-hover/btn:translate-y-1 group-hover/btn:rotate-180 transition-all duration-500" />
                   </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent translate-y-full group-hover/btn:translate-y-0 transition-ease-out-expo" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent translate-y-full group-hover/btn:translate-y-0 transition-all duration-500" />
                 </Button>
               </div>
 
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={scrollToContact}
-                className="group relative overflow-hidden bg-transparent border-2 border-border/50 hover:bg-primary/10 hover:border-primary hover:text-primary dark:hover:text-primary transition-ease-out-expo shadow-lg"
-              >
-                <span className="relative z-10">Get in Touch</span>
-              </Button>
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-accent/50 via-primary/50 to-accent/50 dark:from-accent dark:via-primary dark:to-accent rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-all duration-500" />
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={handleScrollToContact}
+                  className="relative group/btn overflow-hidden bg-transparent border-2 border-primary/50 hover:bg-primary/10 hover:border-primary hover:text-primary transition-all duration-500 shadow-xl hover:shadow-primary/20 px-8 py-4 text-lg font-semibold"
+                >
+                  <span className="relative z-10">Get in Touch</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 translate-x-full group-hover/btn:translate-x-0 transition-all duration-500" />
+                </Button>
+              </div>
             </div>
 
             <div
-              className="flex gap-3 pt-2 animate-fade-in-up"
+              className="flex flex-wrap justify-center gap-3 sm:gap-4 pt-4 sm:pt-6 animate-fade-in-up"
               style={{ animationDelay: "0.5s" }}
             >
-              {contactsOptions.map(({ icon: Icon, href, label }) => (
-                <div key={label} className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-lg blur-md opacity-0 group-hover:opacity-60 transition-all duration-500" />
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    asChild
-                    className="relative overflow-hidden border border-border/50 hover:border-primary/50 hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-all duration-300 backdrop-blur-sm"
+              {CONTACT_OPTIONS.map(({ href, label }, index) => {
+                const Icon =
+                  label === "GitHub"
+                    ? Github
+                    : label === "LinkedIn"
+                    ? Linkedin
+                    : Mail;
+                return (
+                  <div
+                    key={label}
+                    className="relative group"
+                    style={{ animationDelay: `${0.5 + index * 0.1}s` }}
                   >
-                    <a href={href} target="_blank" rel="noopener noreferrer">
-                      <Icon className="h-5 w-5 relative z-10 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-                    </a>
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Terminal section */}
-          <div
-            className={`relative ${
-              isVisible ? "animate-scale-in" : "opacity-0"
-            } lg:block`}
-            style={{ animationDelay: "0.3s" }}
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/30 rounded-3xl blur-3xl animate-gradient bg-[length:200%_auto]" />
-              <div
-                className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-primary/20 to-accent/20 rounded-3xl blur-2xl animate-gradient bg-[length:200%_auto]"
-                style={{ animationDelay: "1s", animationDirection: "reverse" }}
-              />
-
-              {/* Terminal corner badges */}
-              <div className="absolute -top-4 -right-4 p-3 bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl animate-float shadow-xl hover:shadow-primary/30 transition-all duration-300 group glass-card">
-                <Code2 className="h-6 w-6 text-primary group-hover:scale-110 group-hover:rotate-12 transition-transform" />
-              </div>
-              <div
-                className="absolute -bottom-4 -left-4 p-3 bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl animate-float shadow-xl hover:shadow-accent/30 transition-all duration-300 group glass-card"
-                style={{ animationDelay: "1s" }}
-              >
-                <Terminal className="h-6 w-6 text-accent group-hover:scale-110 group-hover:rotate-12 transition-transform" />
-              </div>
-
-              <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl hover:shadow-primary/20 transition-all duration-500 group glass-card">
-                <div className="absolute -inset-[1px] bg-gradient-to-br from-primary via-accent to-primary rounded-3xl opacity-0 group-hover:opacity-10 blur-sm transition-all duration-500 -z-10 animate-gradient bg-[length:200%_auto]" />
-
-                {/* Terminal window icons */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 rounded-full bg-destructive animate-pulse shadow-lg shadow-destructive/50" />
-                  <div
-                    className="w-3 h-3 rounded-full bg-accent animate-pulse shadow-lg shadow-accent/50"
-                    style={{ animationDelay: "0.2s" }}
-                  />
-                  <div
-                    className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-lg shadow-primary/50"
-                    style={{ animationDelay: "0.4s" }}
-                  />
-                </div>
-
-                <div className="space-y-3 font-mono text-sm">
-                  <div className="text-muted-foreground hover:text-foreground transition-colors duration-300 hover:translate-x-1">
-                    <span className="text-primary font-semibold">const</span>{" "}
-                    developer = {"{"}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-accent/50 dark:from-primary dark:to-accent rounded-xl blur-lg opacity-0 group-hover:opacity-70 transition-all duration-500 animate-gradient bg-[length:200%_auto]" />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      asChild
+                      className="relative overflow-hidden border-2 border-primary/30 hover:border-primary/70 hover:bg-primary/10 hover:text-primary transition-all duration-500 backdrop-blur-sm w-12 h-12 sm:w-14 sm:h-14 shadow-lg hover:shadow-primary/30"
+                    >
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center"
+                      >
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 relative z-10 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
+                      </a>
+                    </Button>
                   </div>
-                  <div className="pl-4 text-muted-foreground hover:text-foreground transition-all duration-300 hover:translate-x-1 hover:text-primary cursor-pointer">
-                    name:{" "}
-                    <span className="text-accent font-medium">
-                      "Serdar Senturk"
-                    </span>
-                    ,
-                  </div>
-                  <div className="pl-4 text-muted-foreground hover:text-foreground transition-all duration-300 hover:translate-x-1 hover:text-primary cursor-pointer">
-                    role:{" "}
-                    <span className="text-accent font-medium">
-                      "Software Developer"
-                    </span>
-                    ,
-                  </div>
-                  <div className="pl-4 text-muted-foreground hover:text-foreground transition-all duration-300 hover:translate-x-1 cursor-pointer">
-                    skills: [
-                  </div>
-                  <div className="pl-8 text-accent font-medium hover:text-primary transition-all duration-300 hover:translate-x-2 cursor-pointer hover:scale-105">
-                    "C#", ".NET", "Angular", "Spring"
-                  </div>
-                  <div className="pl-4 text-muted-foreground hover:text-foreground transition-all duration-300 hover:translate-x-1 cursor-pointer">
-                    ],
-                  </div>
-                  <div className="pl-4 text-muted-foreground hover:text-foreground transition-all duration-300 hover:translate-x-1 hover:text-primary cursor-pointer">
-                    passion:{" "}
-                    <span className="text-accent font-medium">
-                      "Scalable Systems"
-                    </span>
-                  </div>
-                  <div className="text-muted-foreground hover:text-foreground transition-colors duration-300 hover:translate-x-1">
-                    {"}"}
-                  </div>
-                </div>
-
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ import {
   Linkedin,
   Mail,
   MessageSquare,
+  Phone,
   Send,
 } from "lucide-react";
 import { useState } from "react";
@@ -50,23 +51,23 @@ export function ContactSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
 
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="space-y-3 mb-10 text-center animate-blur-in">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
+          <div className="space-y-3 mb-8 sm:mb-10 text-center animate-blur-in">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3 sm:mb-4">
               <MessageSquare className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
                 Let&apos;s Connect
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
               Get In Touch
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              I&apos;m always open to discussing new projects, creative ideas,
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Hi, I&apos;m <span className="font-semibold text-primary">Serdar Senturk</span>. I&apos;m always open to discussing new projects, creative ideas,
               or opportunities.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {/* Contact Info Cards */}
             <div className="lg:col-span-1 space-y-4 animate-slide-in-left">
               {/* Email Card */}
@@ -84,6 +85,26 @@ export function ContactSection() {
                       className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
                     >
                       serdarsenturk@windowslive.com
+                    </a>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Phone Card */}
+              <Card className="p-4 group hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 border-primary/10 hover:border-primary/30 bg-gradient-to-br from-card to-card/50">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <Phone className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-medium text-muted-foreground mb-0.5">
+                      Phone
+                    </p>
+                    <a
+                      href="tel:+905334669941"
+                      className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
+                    >
+                      +90 533 466 9941
                     </a>
                   </div>
                 </div>
@@ -141,18 +162,18 @@ export function ContactSection() {
             </div>
 
             {/* Contact Form */}
-            <Card className="lg:col-span-2 p-5 sm:p-6 animate-slide-in-right border-primary/10 hover:border-primary/20 transition-all duration-300 bg-gradient-to-br from-card to-card/50 relative overflow-hidden">
+            <Card className="lg:col-span-2 p-4 sm:p-5 md:p-6 animate-slide-in-right border-primary/10 hover:border-primary/20 transition-all duration-300 bg-gradient-to-br from-card to-card/50 relative overflow-hidden">
               {isSubmitted && (
                 <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
                   <div className="text-center space-y-3">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 animate-scale-in">
-                      <CheckCircle2 className="h-8 w-8 text-primary" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 animate-scale-in">
+                      <CheckCircle2 className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold mb-1">
+                      <h3 className="text-base sm:text-lg font-semibold mb-1">
                         Message Sent!
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         I&apos;ll get back to you soon.
                       </p>
                     </div>
@@ -160,10 +181,10 @@ export function ContactSection() {
                 </div>
               )}
 
-              <form onSubmit={onMessageSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-sm font-medium">
+              <form onSubmit={onMessageSubmit} className="space-y-3 sm:space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="name" className="text-xs sm:text-sm font-medium">
                       Name
                     </Label>
                     <Input
@@ -173,13 +194,13 @@ export function ContactSection() {
                       onChange={(event: any) =>
                         setFormData({ ...formData, name: event.target.value })
                       }
-                      className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50"
+                      className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 text-sm"
                       required
                       disabled={isSubmitting}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
                       Email
                     </Label>
                     <Input
@@ -190,32 +211,32 @@ export function ContactSection() {
                       onChange={(event: any) =>
                         setFormData({ ...formData, email: event.target.value })
                       }
-                      className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50"
+                      className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 text-sm"
                       required
                       disabled={isSubmitting}
                     />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-medium">
+                <div className="space-y-1.5 sm:space-y-2">
+                  <Label htmlFor="message" className="text-xs sm:text-sm font-medium">
                     Message
                   </Label>
                   <Textarea
                     id="message"
                     placeholder="Tell me about your project or just say hi..."
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={(event: any) =>
                       setFormData({ ...formData, message: event.target.value })
                     }
-                    className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 resize-none"
+                    className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 resize-none text-sm"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full group transition-all duration-300 hover:scale-[1.02] bg-primary text-primary-foreground hover:bg-primary/90 h-11"
+                  className="w-full group transition-all duration-300 hover:scale-[1.02] bg-primary text-primary-foreground hover:bg-primary/90 h-10 sm:h-11 text-sm"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

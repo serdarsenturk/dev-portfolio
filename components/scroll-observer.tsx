@@ -5,15 +5,27 @@ import { useEffect } from "react"
 export function ScrollObserver() {
   useEffect(() => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px",
     }
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate-section-reveal")
-          entry.target.classList.remove("opacity-0")
+          // Add staggered animation delay
+          const delay = index * 0.1
+          const target = entry.target as HTMLElement
+          target.style.animationDelay = `${delay}s`
+          target.classList.add("animate-section-reveal")
+          target.classList.remove("opacity-0")
+          
+          // Add micro-interaction for cards
+          const cards = target.querySelectorAll('.group')
+          cards.forEach((card, cardIndex) => {
+            setTimeout(() => {
+              card.classList.add('animate-fade-in-up')
+            }, cardIndex * 100)
+          })
         }
       })
     }, observerOptions)
@@ -24,7 +36,24 @@ export function ScrollObserver() {
       observer.observe(section)
     })
 
-    return () => observer.disconnect()
+    // Enhanced scroll effects
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset
+      const parallax = document.querySelectorAll('.animate-parallax-float')
+      
+      parallax.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.1)
+        const el = element as HTMLElement
+        el.style.transform = `translateY(${scrolled * speed}px)`
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   return null
