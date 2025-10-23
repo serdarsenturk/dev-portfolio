@@ -1,0 +1,207 @@
+{
+  "navigation": {
+    "about": "Hakkımda",
+    "experience": "Deneyim",
+    "skills": "Yetenekler",
+    "projects": "Projeler",
+    "education": "Eğitim",
+    "languages": "Diller",
+    "contact": "İletişim",
+    "download": "CV İndir",
+    "resume": "Özgeçmiş",
+    "cv": "CV"
+  },
+  "hero": {
+    "greeting": "Merhaba, Ben",
+    "name": "Serdar Senturk",
+    "title": "Yazılım Geliştirici",
+    "description": "Yaratıcı geliştirici olarak güzel dijital deneyimler tasarlıyorum",
+    "cta": "Projelerimi Keşfet",
+    "viewProjects": "Projeleri Görüntüle",
+    "getInTouch": "İletişime Geç",
+    "available": "İş için müsait",
+    "subtitle1": "Nesne Yönelimli Tasarım ve SOLID prensipleri kullanarak ölçeklenebilir ve güvenilir uygulamalar geliştiriyorum.",
+    "subtitle2": "3 yıllık deneyime sahip Bilgisayar Mühendisliği mezunu. Backend ve frontend geliştirmede uzman. .NET, C#, Angular ve dağıtık sistemlerde uzman. Yüksek performanslı uygulamalar oluşturmaya ve yeni teknolojiler öğrenmeye tutkulu."
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Merhaba, Ben {name}. Yeni projeler, yaratıcı fikirler veya fırsatlar hakkında konuşmaya her zaman açığım.",
+    "name": "Ad",
+    "email": "E-posta",
+    "message": "Mesaj",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "sendMessage": "Mesaj Gönder",
+    "success": "Mesajınız başarıyla gönderildi!",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "E-posta"
+    },
+    "form": {
+      "placeholder": "Adınız",
+      "nameLabel": "Ad",
+      "emailLabel": "E-posta",
+      "messageLabel": "Mesaj"
+    },
+    "badge": "Bağlanalım",
+    "connectWithMe": "Benimle bağlantı kur",
+    "responseTime": "Yanıt süresi:",
+    "responseTimeValue": "Genellikle 24 saat içinde",
+    "messageSent": "Mesaj Gönderildi!",
+    "messageSentSubtitle": "Yakında size dönüş yapacağım.",
+    "emailPlaceholder": "john@example.com",
+    "messagePlaceholder": "Projeniz hakkında bana bilgi verin veya sadece merhaba deyin..."
+  },
+  "about": {
+    "title": "Hakkımda",
+    "subtitle": "Yaratıcı geliştirici olarak güzel dijital deneyimler tasarlıyorum",
+    "description1": "P.I Works'te 3+ yıllık deneyime sahip tutkulu bir Bilgisayar Mühendisliği mezunu olarak, gerçek dünya uygulamalarını güçlendiren sağlam backend çözümleri geliştirmeye kariyerimi adadım. Uzmanlığım C#, .NET Core, Java, Spring Boot ve mikroservis mimarisi dahil olmak üzere modern teknolojileri kapsar, son zamanlarda Next.js, TypeScript kullanarak full-stack geliştirme ve Expo ve React Native ile mobil geliştirme üzerine odaklanıyorum.",
+    "description2": "Beni motive eden şey, karmaşık problemleri temiz, sürdürülebilir kod aracılığıyla çözme zorluğudur. Anlamlı projelere katkıda bulunurken sürekli teknik ufuklarımı genişletebileceğim işbirlikçi ortamlarda gelişiyorum. En iyi uygulamalara olan bağlılığım, büyüme zihniyeti ile birleştiğinde, beni olağanüstü yazılım çözümleri oluşturmak isteyen herhangi bir geliştirme ekibi için değerli bir varlık haline getiriyor.",
+    "highlights": {
+      "cleanCode": {
+        "title": "Temiz Kod",
+        "description": "OOP ve SOLID prensiplerini takip ederek sürdürülebilir, ölçeklenebilir kod yazma."
+      },
+      "performance": {
+        "title": "Performans",
+        "description": "Yüksek performanslı backend sistemleri ve dağıtık uygulamalar oluşturma."
+      },
+      "fullStack": {
+        "title": "Full-Stack",
+        "description": "Backend (.NET, Spring) ve frontend (Angular, React) geliştirmede deneyim."
+      },
+      "collaboration": {
+        "title": "İşbirliği",
+        "description": "CI/CD ve modern geliştirme uygulamaları ile Agile ekiplerde etkili çalışma."
+      }
+    },
+    "skillCategories": {
+      "programmingLanguages": "Programlama Dilleri",
+      "frameworksTechnologies": "Framework'ler ve Teknolojiler",
+      "databases": "Veritabanları",
+      "devopsCloud": "DevOps ve Bulut",
+      "webServicesApis": "Web Servisleri ve API'ler",
+      "toolsMethodologies": "Araçlar ve Metodolojiler",
+      "Programming": "Programlama",
+      "Frontend": "Frontend",
+      "Backend": "Backend",
+      "Database": "Veritabanı",
+      "DevOps": "DevOps",
+      "Cloud": "Bulut",
+      "Architecture": "Mimari",
+      "Tools": "Araçlar",
+      "Methodologies": "Metodolojiler"
+    },
+    "technicalSkills": "Teknik Yetenekler"
+  },
+  "experience": {
+    "title": "Deneyim",
+    "subtitle": "Profesyonel yolculuğum",
+    "description": "Yazılım geliştirmedeki profesyonel yolculuğum.",
+    "positions": {
+      "juniorDeveloper": "Junior Yazılım Geliştirici",
+      "intern": "Yazılım Mühendisliği Stajyeri"
+    },
+    "companies": {
+      "piWorks": "P.I. Works, Inc."
+    },
+    "descriptions": {
+      "juniorDeveloper": "Agile ekip içinde hem backend hem de frontend geliştirmeye aktif olarak katkıda bulundum, AI destekli mobil ağ çözümlerine odaklandım. C# ve .NET Core/ASP.NET Core kullanarak sağlam backend uygulamaları geliştirdim, büyük ölçekli veritabanlarını (Oracle, PostgreSQL) yönettim ve Angular ve AngularJS kullanarak kullanıcı arayüzleri oluşturdum. Mikroservis ve Mikrofrontend mimarilerini uygularken CI/CD ve Docker ve Kubernetes ile dağıtımı yönettim.",
+      "intern": "Full-stack web uygulaması geliştirme ve sistem migrasyonunda pratik deneyim kazandım. ASP.NET Core, Angular, NHibernate ve Kubernetes kullanarak web uygulaması geliştirmeye dahil oldum. Legacy WPF uygulamasını .NET Framework web uygulamasına geçirdim, müşteriler için çok platformlu kullanımı mümkün kıldım."
+    }
+  },
+  "skills": {
+    "title": "Yetenekler",
+    "subtitle": "Teknik becerilerim ve uzmanlık alanlarım",
+    "badge": "Karakter Sayfası",
+    "characterTitle": "Geliştirici Karakteri",
+    "attributes": "Özellikler",
+    "skillsProficiencies": "Yetenekler ve Uzmanlıklar",
+    "proficiency": {
+      "master": "Usta",
+      "expert": "Uzman",
+      "advanced": "İleri",
+      "intermediate": "Orta",
+      "beginner": "Başlangıç"
+    },
+    "level": "Seviye",
+    "proficient": "Uzman",
+    "bonus": "Bonus",
+    "developerLevel": "Geliştirici Seviyesi",
+    "experience": "Deneyim",
+    "xpToNextLevel": "XP bir sonraki seviyeye",
+    "levelBenefits": "Seviye Avantajları:",
+    "advancedProblemSolving": "Gelişmiş problem çözme yetenekleri",
+    "mentorshipLeadership": "Mentorluk ve liderlik becerileri",
+    "architectureDesign": "Mimari ve tasarım uzmanlığı"
+  },
+  "projects": {
+    "title": "Projeler",
+    "subtitle": "Son çalışmalarım ve projelerim",
+    "buttons": {
+      "viewCode": "Kodu Görüntüle",
+      "liveDemo": "Canlı Demo"
+    },
+    "items": {
+      "springDistributed": {
+        "title": "Spring Dağıtık Sistemler",
+        "description": "Spring framework kullanarak dağıtık sistemler ile film değerlendirme sistemi uygulaması. RabbitMQ mesajlaşma ve Redis önbellekleme kullanıldı. Docker ile konteynerize edildi. Agile metodolojisi uygulandı ve tüm SDLC aşamalarında yer alındı."
+      },
+      "javaDistributed": {
+        "title": "Java Dağıtık Sistemler",
+        "description": "Java/J2EE kullanarak dağıtık mimari ile film değerlendirme sistemi. RESTful API'ler ve MySQL kullanıldı. OOP prensipleri, tasarım desenleri uygulandı ve soyut sınıflar ve arayüzler ile DAO deseni dahil edildi."
+      },
+      "djangoMovie": {
+        "title": "Django Film Değerlendirme Sistemi",
+        "description": "Django ile oluşturulmuş film değerlendirme web sitesinin backend bölümü. MVT mimarisi, RESTful API'ler ve otomatik fonksiyonel testler uygulandı. Django ORM ile MySQL veritabanı kullanıldı."
+      },
+      "easyRetrospective": {
+        "title": "Easy Retrospective",
+        "description": "Agile ekiplerin retrospektif toplantıları yapması için retrospektif aracı backend uygulaması. Python ve modern backend uygulamaları ile oluşturuldu."
+      }
+    }
+  },
+  "education": {
+    "title": "Eğitim",
+    "subtitle": "Akademik geçmişim",
+    "institution": "Trakya Üniversitesi",
+    "period": "2018 - 2022",
+    "degree": "Bilgisayar Mühendisliği Lisans",
+    "keyAreas": "Temel Öğrenme Alanları",
+    "badge": "Akademik Yolculuk",
+    "description": "Bilgisayar Mühendisliği akademik geçmişim, yazılım geliştirme, algoritmalar ve sistem tasarımında sağlam bir temel sağladı.",
+    "degreeType": "Lisans Derecesi",
+    "focusAreas": "Odak Alanları",
+    "graduationDescription": "Yazılım mühendisliği, algoritmalar ve dağıtık sistemlere odaklanarak mezun oldum.",
+    "areas": {
+      "softwareEngineering": "Yazılım Mühendisliği",
+      "algorithmDesign": "Algoritma Tasarımı",
+      "distributedSystems": "Dağıtık Sistemler",
+      "databaseManagement": "Veritabanı Yönetimi",
+      "objectOrientedProgramming": "Nesne Yönelimli Programlama",
+      "systemArchitecture": "Sistem Mimarisi"
+    }
+  },
+  "languages": {
+    "title": "Diller",
+    "subtitle": "Konuştuğum diller",
+    "badge": "İletişim",
+    "description": "Yazılım geliştirmede etkili iletişim anahtardır. İşte yetkin olduğum diller.",
+    "proficiencyLevel": "Yeterlilik Seviyesi",
+    "proficiencyLabel": "Yeterlilik",
+    "proficiency": {
+      "native": "Ana Dil",
+      "fluent": "Akıcı",
+      "advanced": "İleri",
+      "intermediate": "Orta",
+      "basic": "Temel",
+      "beginner": "Başlangıç"
+    },
+    "languageNames": {
+      "turkish": "Türkçe",
+      "english": "İngilizce"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "navigation": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "education": "Education",
+    "languages": "Languages",
+    "contact": "Contact",
+    "download": "Download CV",
+    "resume": "Resume",
+    "cv": "CV"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Serdar Senturk",
+    "title": "Software Developer",
+    "description": "Creative developer crafting beautiful digital experiences",
+    "cta": "Explore My Work",
+    "viewProjects": "View Projects",
+    "getInTouch": "Get in Touch",
+    "available": "Available for work",
+    "subtitle1": "Building scalable and reliable applications using Object-Oriented Design and SOLID principles.",
+    "subtitle2": "Computer Engineering graduate with 3 years of experience in backend and frontend development. Specialized in .NET, C#, Angular, and distributed systems. Passionate about creating high-performance applications and learning new technologies."
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Hi, I'm {name}. I'm always open to discussing new projects, creative ideas, or opportunities.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "sendMessage": "Send Message",
+    "success": "Your message has been sent successfully!",
+    "error": "An error occurred. Please try again.",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    },
+    "form": {
+      "placeholder": "Your Name",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "messageLabel": "Message"
+    },
+    "badge": "Let's Connect",
+    "connectWithMe": "Connect with me",
+    "responseTime": "Response time:",
+    "responseTimeValue": "Usually within 24 hours",
+    "messageSent": "Message Sent!",
+    "messageSentSubtitle": "I'll get back to you soon.",
+    "emailPlaceholder": "john@example.com",
+    "messagePlaceholder": "Tell me about your project or just say hi..."
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Creative developer crafting beautiful digital experiences",
+    "description1": "As a passionate Computer Engineering graduate with 3+ years of hands-on experience at P.I Works, I've dedicated my career to crafting robust backend solutions that power real-world applications. My expertise spans modern technologies including C#, .NET Core, Java, Spring Boot, and microservices architecture, with recent focus on full-stack development using Next.js, TypeScript, and mobile development with Expo and React Native.",
+    "description2": "What drives me is the challenge of solving intricate problems through clean, maintainable code. I thrive in collaborative environments where I can contribute to meaningful projects while continuously expanding my technical horizons. My commitment to best practices, combined with a growth mindset, makes me a valuable asset to any development team looking to build exceptional software solutions.",
+    "highlights": {
+      "cleanCode": {
+        "title": "Clean Code",
+        "description": "Writing maintainable, scalable code following OOP and SOLID principles."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Building high-performance backend systems and distributed applications."
+      },
+      "fullStack": {
+        "title": "Full-Stack",
+        "description": "Experience in both backend (.NET, Spring) and frontend (Angular, React) development."
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "Working effectively in Agile teams with CI/CD and modern development practices."
+      }
+    },
+    "skillCategories": {
+      "programmingLanguages": "Programming Languages",
+      "frameworksTechnologies": "Frameworks & Technologies",
+      "databases": "Databases",
+      "devopsCloud": "DevOps & Cloud",
+      "webServicesApis": "Web Services & APIs",
+      "toolsMethodologies": "Tools & Methodologies",
+      "Programming": "Programming",
+      "Frontend": "Frontend",
+      "Backend": "Backend",
+      "Database": "Database",
+      "DevOps": "DevOps",
+      "Cloud": "Cloud",
+      "Architecture": "Architecture",
+      "Tools": "Tools",
+      "Methodologies": "Methodologies"
+    },
+    "technicalSkills": "Technical Skills"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey",
+    "description": "My professional journey in software development.",
+    "positions": {
+      "juniorDeveloper": "Junior Software Developer",
+      "intern": "Software Engineering Intern"
+    },
+    "companies": {
+      "piWorks": "P.I. Works, Inc."
+    },
+    "descriptions": {
+      "juniorDeveloper": "Contributed actively to both backend and frontend development within an Agile team, focusing on AI-driven mobile network solutions. Developed robust backend applications using C# and .NET Core/ASP.NET Core, managed large-scale databases (Oracle, PostgreSQL), and built user interfaces using Angular and AngularJS. Applied Microservices and Microfrontend architectures while managing CI/CD and deployment with Docker and Kubernetes.",
+      "intern": "Gained practical experience in full-stack web application development and system migration. Involved in web application development using ASP.NET Core, Angular, NHibernate, and Kubernetes. Migrated a legacy WPF application to a .NET Framework web application, enabling multi-platform use for customers."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "My technical skills and expertise areas",
+    "badge": "Character Sheet",
+    "characterTitle": "Developer Character",
+    "attributes": "Attributes",
+    "skillsProficiencies": "Skills & Proficiencies",
+    "proficiency": {
+      "master": "Master",
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "beginner": "Beginner"
+    },
+    "level": "Level",
+    "proficient": "Proficient",
+    "bonus": "Bonus",
+    "developerLevel": "Developer Level",
+    "experience": "Experience",
+    "xpToNextLevel": "XP to next level",
+    "levelBenefits": "Level Benefits:",
+    "advancedProblemSolving": "Advanced problem-solving abilities",
+    "mentorshipLeadership": "Mentorship and leadership skills",
+    "architectureDesign": "Architecture and design expertise"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "My recent work and projects",
+    "buttons": {
+      "viewCode": "View Code",
+      "liveDemo": "Live Demo"
+    },
+    "items": {
+      "springDistributed": {
+        "title": "Spring Distributed Systems",
+        "description": "Movie Rating System implementation with Distributed Systems using Spring framework, RabbitMQ for messaging, and Redis for caching. Containerized with Docker. Applied Agile methodology and involved in all SDLC phases."
+      },
+      "javaDistributed": {
+        "title": "Java Distributed Systems",
+        "description": "Movie Rating System with distributed architecture using Java/J2EE, RESTful APIs, and MySQL. Implements OOP principles, design patterns, and includes DAO pattern with abstract classes and interfaces."
+      },
+      "djangoMovie": {
+        "title": "Django Movie Rating System",
+        "description": "Backend section of a movie rating website built with Django. Implements MVT architecture, RESTful APIs, and automated functional testing. Uses MySQL database with Django ORM."
+      },
+      "easyRetrospective": {
+        "title": "Easy Retrospective",
+        "description": "Retro tool backend application for agile teams to conduct retrospective meetings. Built with Python and modern backend practices."
+      }
+    }
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic background",
+    "institution": "Trakya University",
+    "period": "2018 - 2022",
+    "degree": "Bachelor of Computer Engineering",
+    "keyAreas": "Key Learning Areas",
+    "badge": "Academic Journey",
+    "description": "My academic background in Computer Engineering has provided me with a strong foundation in software development, algorithms, and system design.",
+    "degreeType": "Bachelor's Degree",
+    "focusAreas": "Focus Areas",
+    "graduationDescription": "Graduated with focus on software engineering, algorithms, and distributed systems.",
+    "areas": {
+      "softwareEngineering": "Software Engineering",
+      "algorithmDesign": "Algorithm Design",
+      "distributedSystems": "Distributed Systems",
+      "databaseManagement": "Database Management",
+      "objectOrientedProgramming": "Object-Oriented Programming",
+      "systemArchitecture": "System Architecture"
+    }
+  },
+  "languages": {
+    "title": "Languages",
+    "subtitle": "Languages I speak",
+    "badge": "Communication",
+    "description": "Effective communication is key in software development. Here are the languages I'm proficient in.",
+    "proficiencyLevel": "Proficiency Level",
+    "proficiencyLabel": "Proficiency",
+    "proficiency": {
+      "native": "Native",
+      "fluent": "Fluent",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate",
+      "basic": "Basic",
+      "beginner": "Beginner"
+    },
+    "languageNames": {
+      "turkish": "Turkish",
+      "english": "English"
+    }
+  }
+}
