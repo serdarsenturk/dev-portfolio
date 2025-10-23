@@ -1,7 +1,8 @@
 {
-  "name": "dev-portfolio",
+  "name": "personal-portfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "A modern, responsive personal portfolio website built with Next.js 16, TypeScript, and Tailwind CSS",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

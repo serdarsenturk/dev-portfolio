@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio
 
-## Getting Started
+A modern, responsive personal portfolio website built with Next.js 16, TypeScript, and Tailwind CSS. Features internationalization support for Turkish and English languages.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **🌍 Internationalization**: Full support for Turkish and English languages
+- **📱 Responsive Design**: Mobile-first approach with Tailwind CSS
+- **🎨 Modern UI**: Beautiful gradient backgrounds and glass morphism effects
+- **⚡ Performance**: Built with Next.js 16 App Router for optimal performance
+- **🔧 TypeScript**: Full type safety throughout the application
+- **📧 Contact Form**: Working contact form with EmailJS integration
+- **🎮 Interactive Elements**: Animated skill cards and character sheet
+- **🌙 Dark Mode**: Built-in dark/light theme support
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom components with Radix UI
+- **Icons**: Lucide React
+- **Email Service**: EmailJS
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Add your EmailJS credentials:
+   ```env
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🌍 Internationalization
+
+The portfolio supports two languages:
+- **Turkish** (`/tr`) - Default language
+- **English** (`/en`)
+
+### Adding New Languages
+
+1. Create a new dictionary file in `app/[lang]/dictionaries/`
+2. Add the locale to `proxy.ts`
+3. Update the `Locale` type in `lib/types.ts`
+
+### Translation Files
+
+- `app/[lang]/dictionaries/tr.json` - Turkish translations
+- `app/[lang]/dictionaries/en.json` - English translations
+
+## 🎨 Customization
+
+### Personal Information
+
+Update your personal details in `lib/constants.ts`:
+
+```typescript
+export const DEVELOPER_INFO = {
+  name: "Your Name",
+  title: "Your Title",
+  email: "your.email@example.com",
+  // ... other details
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Skills and Experience
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Modify the data in `lib/constants.ts` to reflect your skills and experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Styling
 
-## Learn More
+The portfolio uses Tailwind CSS with custom configurations. Main styling files:
+- `app/[lang]/globals.css` - Global styles
+- Component-specific styles are inline with Tailwind classes
 
-To learn more about Next.js, take a look at the following resources:
+## 📧 Contact Form Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Create EmailJS account** at [emailjs.com](https://emailjs.com)
+2. **Set up email service** (Gmail, Outlook, etc.)
+3. **Create email template** with these variables:
+   - `{{from_name}}` - Sender's name
+   - `{{from_email}}` - Sender's email
+   - `{{message}}` - Message content
+4. **Add credentials** to `.env.local`
