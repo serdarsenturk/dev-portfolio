@@ -16,6 +16,7 @@ import {
   Phone,
   Send,
   AlertCircle,
+  Download,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { emailService } from "@/lib/email-service";
@@ -53,6 +54,8 @@ interface ContactSectionProps {
       messageSentSubtitle: string;
       emailPlaceholder: string;
       messagePlaceholder: string;
+      downloadCV: string;
+      downloadFormat: string;
     };
   };
 }
@@ -71,6 +74,15 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
   useEffect(() => {
     emailService.initialize();
   }, []);
+
+  const handleDownloadCV = () => {
+    // Get current language from URL or default to 'tr'
+    const currentLang = window.location.pathname.includes('/en') ? 'en' : 'tr';
+    const cvFileName = currentLang === 'en' ? 'cv-serdar-senturk-en.pdf' : 'cv-serdar-senturk-tr.pdf';
+    
+    // Open PDF in new tab for preview, then user can download if they want
+    window.open(`/${cvFileName}`, '_blank');
+  };
 
   const onMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -114,122 +126,159 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
     <>
       <section
         id="contact"
-        className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+        className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+        {/* Modern Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/60 dark:from-slate-900 dark:via-blue-950/30 dark:to-indigo-950/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-200/30 via-transparent to-transparent dark:from-blue-900/20" />
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-purple-400/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-full blur-3xl" />
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="space-y-3 mb-8 sm:mb-10 text-center animate-blur-in">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3 sm:mb-4">
-              <MessageSquare className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
+        <div className="container mx-auto max-w-7xl relative z-10">
+          {/* Modern Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 mb-6 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                 {dictionary.contact.badge}
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-800 via-blue-800 to-slate-800 dark:from-white dark:via-blue-100 dark:to-white bg-clip-text text-transparent mb-6">
               {dictionary.contact.title}
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
               {dictionary.contact.subtitle.replace('{name}', DEVELOPER_INFO.NAME)}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            {/* Contact Info Cards */}
-            <div className="lg:col-span-1 space-y-4 animate-slide-in-left">
-              {/* Email Card */}
-              <Card className="p-4 group hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 border-primary/10 hover:border-primary/30 bg-gradient-to-br from-card to-card/50">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-muted-foreground mb-0.5">
-                      Email
-                    </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Modern Contact Info */}
+            <div className="space-y-6">
+              {/* Contact Methods */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Email */}
+                <div className="group relative p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:border-blue-400/60 dark:hover:border-blue-400/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-blue-500/10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/8 to-purple-500/8 dark:from-blue-500/5 dark:to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-xl bg-blue-500/15 group-hover:bg-blue-500/25 dark:bg-blue-500/10 dark:group-hover:bg-blue-500/20 transition-colors duration-300">
+                        <Mail className="h-5 w-5 text-blue-700 dark:text-blue-400" />
+                      </div>
+                      <span className="text-sm font-semibold text-slate-700 dark:text-slate-400">Email</span>
+                    </div>
                     <a
                       href={`mailto:${DEVELOPER_INFO.EMAIL}`}
-                      className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
+                      className="text-slate-800 dark:text-white font-medium hover:text-blue-700 dark:hover:text-blue-400 transition-colors duration-300 break-all text-sm"
                     >
                       {DEVELOPER_INFO.EMAIL}
                     </a>
                   </div>
                 </div>
-              </Card>
 
-              {/* Phone Card */}
-              <Card className="p-4 group hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 border-primary/10 hover:border-primary/30 bg-gradient-to-br from-card to-card/50">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-muted-foreground mb-0.5">
-                      Phone
-                    </p>
+                {/* Phone */}
+                <div className="group relative p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 hover:border-green-400/60 dark:hover:border-green-400/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/20 dark:hover:shadow-green-500/10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/8 to-emerald-500/8 dark:from-green-500/5 dark:to-emerald-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-xl bg-green-500/15 group-hover:bg-green-500/25 dark:bg-green-500/10 dark:group-hover:bg-green-500/20 transition-colors duration-300">
+                        <Phone className="h-5 w-5 text-green-700 dark:text-green-400" />
+                      </div>
+                      <span className="text-sm font-semibold text-slate-700 dark:text-slate-400">Phone</span>
+                    </div>
                     <a
                       href={`tel:${DEVELOPER_INFO.PHONE}`}
-                      className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
+                      className="text-slate-800 dark:text-white font-medium hover:text-green-700 dark:hover:text-green-400 transition-colors duration-300"
                     >
                       {DEVELOPER_INFO.PHONE}
                     </a>
                   </div>
                 </div>
-              </Card>
+              </div>
 
-              {/* Social Links Card */}
-              <Card className="p-4 border-primary/10 bg-gradient-to-br from-card to-card/50">
-                <p className="text-xs font-medium text-muted-foreground mb-3">
+              {/* Social Links */}
+              <div className="p-6 rounded-2xl bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-slate-200/50 dark:border-white/10">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">
                   {dictionary.contact.connectWithMe}
-                </p>
-                <div className="flex gap-2">
+                </h3>
+                <div className="flex gap-3">
                   {[
                     {
                       icon: Github,
                       href: DEVELOPER_INFO.GITHUB_URL,
                       label: dictionary.contact.social.github,
-                      color: "hover:bg-foreground/10",
+                      color: "hover:bg-slate-200 dark:hover:bg-slate-800",
+                      iconColor: "text-slate-700 dark:text-slate-400",
                     },
                     {
                       icon: Linkedin,
                       href: DEVELOPER_INFO.LINKEDIN_URL,
                       label: dictionary.contact.social.linkedin,
-                      color: "hover:bg-blue-500/10",
+                      color: "hover:bg-blue-200 dark:hover:bg-blue-900/30",
+                      iconColor: "text-blue-700 dark:text-blue-400",
                     },
                     {
                       icon: Mail,
                       href: `mailto:${DEVELOPER_INFO.EMAIL}`,
                       label: dictionary.contact.social.email,
-                      color: "hover:bg-primary/10",
+                      color: "hover:bg-red-200 dark:hover:bg-red-900/30",
+                      iconColor: "text-red-700 dark:text-red-400",
                     },
-                  ].map(({ icon: Icon, href, label, color }) => (
+                  ].map(({ icon: Icon, href, label, color, iconColor }) => (
                     <a
                       key={label}
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group/social flex-1 p-2.5 rounded-lg bg-muted/30 ${color} transition-all duration-300 hover:scale-105 flex items-center justify-center`}
+                      className={`group/social flex-1 p-4 rounded-xl bg-slate-100/80 dark:bg-slate-800/50 ${color} transition-all duration-300 hover:scale-105 flex items-center justify-center border border-slate-300/50 dark:border-slate-700/50`}
                       aria-label={label}
                     >
-                      <Icon className="h-4 w-4 text-muted-foreground group-hover/social:text-foreground transition-colors" />
+                      <Icon className={`h-6 w-6 ${iconColor} group-hover/social:scale-110 transition-transform duration-300`} />
                     </a>
                   ))}
                 </div>
-              </Card>
+              </div>
 
-              {/* Info Card */}
-              <Card className="p-4 border-primary/10 bg-gradient-to-br from-primary/5 to-accent/5">
-                <p className="text-xs leading-relaxed text-muted-foreground">
-                  <span className="font-semibold text-foreground">
+              {/* Download CV */}
+              <div className="group relative p-6 rounded-2xl bg-gradient-to-br from-blue-500/15 via-purple-500/8 to-blue-500/15 dark:from-blue-500/10 dark:via-purple-500/5 dark:to-blue-500/10 backdrop-blur-xl border border-blue-300/60 dark:border-blue-800/50 hover:border-blue-400/80 dark:hover:border-blue-700/70 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/25 dark:hover:shadow-blue-500/20">
+                <button
+                  onClick={handleDownloadCV}
+                  className="w-full flex items-center gap-4 p-2 rounded-xl hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="p-3 rounded-xl bg-blue-500/25 group-hover:bg-blue-500/35 dark:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors duration-300">
+                    <Download className="h-6 w-6 text-blue-700 dark:text-blue-400" />
+                  </div>
+                  <div className="flex-1 text-left">
+                    <p className="text-lg font-semibold text-slate-800 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      {dictionary.contact.downloadCV}
+                    </p>
+                    <p className="text-sm text-slate-700 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors duration-300">
+                      {dictionary.contact.downloadFormat}
+                    </p>
+                  </div>
+                </button>
+              </div>
+
+              {/* Response Time */}
+              <div className="p-4 rounded-xl bg-green-100/80 dark:bg-green-900/20 border border-green-300/60 dark:border-green-800/50">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-sm font-semibold text-green-800 dark:text-green-400">
                     {dictionary.contact.responseTime}
-                  </span>{" "}
+                  </span>
+                </div>
+                <p className="text-sm text-green-700 dark:text-green-300">
                   {dictionary.contact.responseTimeValue}
                 </p>
-              </Card>
+              </div>
             </div>
 
-            {/* Contact Form */}
-            <Card className="lg:col-span-2 p-4 sm:p-5 md:p-6 animate-slide-in-right border-primary/10 hover:border-primary/20 transition-all duration-300 bg-gradient-to-br from-card to-card/50 relative overflow-hidden">
+            {/* Modern Contact Form */}
+            <div className="relative p-6 rounded-2xl bg-white/90 dark:bg-white/5 backdrop-blur-2xl border border-slate-200/60 dark:border-white/10 shadow-2xl shadow-slate-200/50 dark:shadow-blue-500/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/8 via-purple-500/8 to-blue-500/8 dark:from-blue-500/5 dark:via-purple-500/5 dark:to-blue-500/5 rounded-2xl" />
+              <div className="relative z-10">
               {isSubmitted && (
                 <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
                   <div className="text-center space-y-3">
@@ -266,11 +315,11 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                 </div>
               )}
 
-              <form onSubmit={onMessageSubmit} className="space-y-3 sm:space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                  <div className="space-y-1.5 sm:space-y-2">
-                    <Label htmlFor="name" className="text-xs sm:text-sm font-medium">
-                      {dictionary.contact.form.nameLabel}
+              <form onSubmit={onMessageSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="name" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      {dictionary.contact.form.nameLabel} <span className="text-red-500">*</span>
                     </Label>
                     <Input
                       id="name"
@@ -279,14 +328,14 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       onChange={(event: any) =>
                         setFormData({ ...formData, name: event.target.value })
                       }
-                      className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 text-sm"
+                      className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
                       required
                       disabled={isSubmitting}
                     />
                   </div>
-                  <div className="space-y-1.5 sm:space-y-2">
-                    <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
-                      {dictionary.contact.form.emailLabel}
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                      {dictionary.contact.form.emailLabel} <span className="text-red-500">*</span>
                     </Label>
                     <Input
                       id="email"
@@ -296,32 +345,32 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       onChange={(event: any) =>
                         setFormData({ ...formData, email: event.target.value })
                       }
-                      className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 text-sm"
+                      className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
                       required
                       disabled={isSubmitting}
                     />
                   </div>
                 </div>
-                <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="message" className="text-xs sm:text-sm font-medium">
-                    {dictionary.contact.form.messageLabel}
+                <div className="space-y-1.5">
+                  <Label htmlFor="message" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    {dictionary.contact.form.messageLabel} <span className="text-red-500">*</span>
                   </Label>
                   <Textarea
                     id="message"
                     placeholder={dictionary.contact.messagePlaceholder}
-                    rows={4}
+                    rows={3}
                     value={formData.message}
                     onChange={(event: any) =>
                       setFormData({ ...formData, message: event.target.value })
                     }
-                    className="transition-all duration-300 focus:scale-[1.01] border-primary/20 focus:border-primary/50 resize-none text-sm"
+                    className="px-4 py-3 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none transition-all duration-300 shadow-sm"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full group transition-all duration-300 hover:scale-[1.02] bg-primary text-primary-foreground hover:bg-primary/90 h-10 sm:h-11 text-sm"
+                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -337,7 +386,8 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                   )}
                 </Button>
               </form>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -7,9 +7,7 @@
     "education": "Eğitim",
     "languages": "Diller",
     "contact": "İletişim",
-    "download": "CV İndir",
-    "resume": "Özgeçmiş",
-    "cv": "CV"
+    "download": "CV Görüntüle"
   },
   "hero": {
     "greeting": "Merhaba, Ben",
@@ -52,7 +50,9 @@
     "messageSent": "Mesaj Gönderildi!",
     "messageSentSubtitle": "Yakında size dönüş yapacağım.",
     "emailPlaceholder": "john@example.com",
-    "messagePlaceholder": "Projeniz hakkında bana bilgi verin veya sadece merhaba deyin..."
+    "messagePlaceholder": "Projeniz hakkında bana bilgi verin veya sadece merhaba deyin...",
+    "downloadCV": "CV Görüntüle",
+    "downloadFormat": "PDF formatında görüntüle"
   },
   "about": {
     "title": "Hakkımda",

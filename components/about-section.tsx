@@ -168,7 +168,7 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-8 sm:mb-12">
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 rounded-3xl blur-2xl" />
               
@@ -178,7 +178,7 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
                 <div className="relative z-10 text-center">
                   <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 border-4 border-primary/20 dark:border-primary/30 overflow-hidden shadow-2xl group-hover/photo:scale-105 transition-all duration-500">
                     <img 
-                      src="/placeholder-user.jpg" 
+                      src="/profile-photo.jpg" 
                       alt="Serdar Senturk" 
                       className="w-full h-full object-cover group-hover/photo:scale-110 transition-transform duration-500"
                     />
@@ -206,7 +206,7 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
+          <div className="order-2 lg:order-2 space-y-4 sm:space-y-6">
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground text-pretty leading-relaxed">
               {dictionary.about.description1}
             </p>

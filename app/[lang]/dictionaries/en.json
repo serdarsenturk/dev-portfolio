@@ -7,9 +7,7 @@
     "education": "Education",
     "languages": "Languages",
     "contact": "Contact",
-    "download": "Download CV",
-    "resume": "Resume",
-    "cv": "CV"
+    "download": "View Resume"
   },
   "hero": {
     "greeting": "Hello, I'm",
@@ -52,7 +50,9 @@
     "messageSent": "Message Sent!",
     "messageSentSubtitle": "I'll get back to you soon.",
     "emailPlaceholder": "john@example.com",
-    "messagePlaceholder": "Tell me about your project or just say hi..."
+    "messagePlaceholder": "Tell me about your project or just say hi...",
+    "downloadCV": "View Resume",
+    "downloadFormat": "View in PDF format"
   },
   "about": {
     "title": "About",

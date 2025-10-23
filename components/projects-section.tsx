@@ -21,7 +21,7 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
     {
       title: dictionary.projects.items.springDistributed.title,
       description: dictionary.projects.items.springDistributed.description,
-      image: "/spring-boot-distributed-system-architecture.jpg",
+      image: "/project-spring-boot.jpg",
       technologies: ["Java", "Spring", "RabbitMQ", "Redis", "Docker", "MySQL", "Log4j", "Slf4j"],
       github: "https://github.com/serdarsenturk/spring-distributed-systems",
       demo: "https://github.com/serdarsenturk/spring-distributed-systems",
@@ -29,7 +29,7 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
     {
       title: dictionary.projects.items.javaDistributed.title,
       description: dictionary.projects.items.javaDistributed.description,
-      image: "/java-microservices-architecture-diagram.jpg",
+      image: "/project-java-microservices.jpg",
       technologies: ["Java", "J2EE", "RESTful API", "MySQL", "Maven", "Postman", "Git"],
       github: "https://github.com/serdarsenturk/java-distributed-systems",
       demo: "https://github.com/serdarsenturk/java-distributed-systems",
@@ -37,7 +37,7 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
     {
       title: dictionary.projects.items.djangoMovie.title,
       description: dictionary.projects.items.djangoMovie.description,
-      image: "/agile-retrospective-tool-interface.jpg",
+      image: "/project-agile-retrospective.jpg",
       technologies: [
         "Python",
         "Django",
@@ -52,7 +52,7 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
     {
       title: dictionary.projects.items.easyRetrospective.title,
       description: dictionary.projects.items.easyRetrospective.description,
-      image: "/digital-scoreboard-web-app.jpg",
+      image: "/project-scoreboard.jpg",
       technologies: ["Python", "JavaScript", "Flask", "PostgreSQL", "NextJS", "Auth0"],
       github: "https://github.com/serdarsenturk/easyretrospective",
       demo: "https://github.com/serdarsenturk/easyretrospective",

@@ -24,8 +24,6 @@ interface NavigationProps {
       languages: string;
       contact: string;
       download: string;
-      resume: string;
-      cv: string;
     };
   };
 }
@@ -64,6 +62,15 @@ export function Navigation({ dictionary }: NavigationProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleDownloadCV = () => {
+    // Get current language from URL or default to 'tr'
+    const currentLang = window.location.pathname.includes('/en') ? 'en' : 'tr';
+    const cvFileName = currentLang === 'en' ? 'cv-serdar-senturk-en.pdf' : 'cv-serdar-senturk-tr.pdf';
+    
+    // Open PDF in new tab for preview, then user can download if they want
+    window.open(`/${cvFileName}`, '_blank');
+  };
 
   return (
     <nav
@@ -110,10 +117,11 @@ export function Navigation({ dictionary }: NavigationProps) {
 
             <div className="flex items-center gap-3">
               <Button
+                onClick={handleDownloadCV}
                 size="sm"
-                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-full px-3 py-2 text-sm whitespace-nowrap"
+                className="gap-1.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 rounded-full px-3 py-1.5 text-xs whitespace-nowrap shadow-md hover:shadow-lg hover:scale-105"
               >
-                <Download className="h-4 w-4" />
+                <Download className="h-3.5 w-3.5" />
                 {dictionary.navigation.download}
               </Button>
               
@@ -147,12 +155,12 @@ export function Navigation({ dictionary }: NavigationProps) {
             {/* Actions - Right side with ultra compact spacing */}
             <div className="flex items-center gap-1.5 flex-shrink-0">
               <Button
+                onClick={handleDownloadCV}
                 size="sm"
-                className="gap-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-full px-2 py-1 text-xs whitespace-nowrap"
+                className="gap-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 rounded-full px-2 py-1 text-xs whitespace-nowrap shadow-sm hover:shadow-md hover:scale-105"
               >
                 <Download className="h-3 w-3" />
-                <span className="hidden sm:inline">{dictionary.navigation.resume}</span>
-                <span className="sm:hidden">{dictionary.navigation.cv}</span>
+                {dictionary.navigation.download}
               </Button>
               
               <ThemeToggle />
@@ -186,8 +194,9 @@ export function Navigation({ dictionary }: NavigationProps) {
                   
                   <div className="pt-4 border-t">
                     <Button
+                      onClick={handleDownloadCV}
                       size="sm"
-                      className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg px-4 py-3 text-sm"
+                      className="w-full gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 rounded-lg px-4 py-2.5 text-sm shadow-md hover:shadow-lg hover:scale-105"
                     >
                       <Download className="h-4 w-4" />
                       {dictionary.navigation.download}
