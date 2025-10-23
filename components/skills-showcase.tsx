@@ -11,7 +11,50 @@ import { LevelCard } from "./level-card";
 import { RaceCard } from "./race-card";
 import { SkillCard } from "./skill-card";
 
-export function SkillsShowcase() {
+interface SkillsShowcaseProps {
+  dictionary: {
+    skills: {
+      title: string;
+      subtitle: string;
+      badge: string;
+      characterTitle: string;
+      attributes: string;
+      skillsProficiencies: string;
+      proficiency: {
+        master: string;
+        expert: string;
+        advanced: string;
+        intermediate: string;
+        beginner: string;
+      };
+      level: string;
+      proficient: string;
+      bonus: string;
+      developerLevel: string;
+      experience: string;
+      xpToNextLevel: string;
+      levelBenefits: string;
+      advancedProblemSolving: string;
+      mentorshipLeadership: string;
+      architectureDesign: string;
+    };
+    about: {
+      skillCategories: {
+        Programming: string;
+        Frontend: string;
+        Backend: string;
+        Database: string;
+        DevOps: string;
+        Cloud: string;
+        Architecture: string;
+        Tools: string;
+        Methodologies: string;
+      };
+    };
+  };
+}
+
+export function SkillsShowcase({ dictionary }: SkillsShowcaseProps) {
   const {
     attributes,
     skills,
@@ -51,11 +94,11 @@ export function SkillsShowcase() {
           <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/20 dark:border-primary/30 mb-4 sm:mb-6">
             <Dice1 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
             <span className="text-sm sm:text-lg font-semibold text-primary">
-              Character Sheet
+              {dictionary.skills.badge}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-foreground to-primary dark:from-foreground dark:to-accent bg-clip-text text-transparent mb-3 sm:mb-4">
-            Developer Character
+            {dictionary.skills.characterTitle}
           </h2>
         </div>
 
@@ -67,6 +110,7 @@ export function SkillsShowcase() {
               level={level}
               experience={experience}
               experienceToNext={experienceToNext}
+              dictionary={dictionary}
             />
 
             {/* Character Class */}
@@ -80,7 +124,7 @@ export function SkillsShowcase() {
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                 <Star className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500 dark:text-yellow-400" />
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground dark:text-white">
-                  Attributes
+                  {dictionary.skills.attributes}
                 </h3>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -101,7 +145,7 @@ export function SkillsShowcase() {
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                 <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-green-500 dark:text-green-400" />
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground dark:text-white">
-                  Skills & Proficiencies
+                  {dictionary.skills.skillsProficiencies}
                 </h3>
               </div>
 
@@ -114,7 +158,7 @@ export function SkillsShowcase() {
                           variant="outline"
                           className="bg-slate-100 dark:bg-slate-700/50 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold"
                         >
-                          {category}
+                          {dictionary.about.skillCategories[category as keyof typeof dictionary.about.skillCategories] || category}
                         </Badge>
                         <Separator className="flex-1 bg-slate-300 dark:bg-slate-600" />
                       </div>
@@ -125,6 +169,7 @@ export function SkillsShowcase() {
                             key={skill.name}
                             skill={skill}
                             delay={categoryIndex * 0.2 + skillIndex * 0.1}
+                            dictionary={dictionary}
                           />
                         ))}
                       </div>

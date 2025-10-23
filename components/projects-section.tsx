@@ -12,30 +12,31 @@ import {
 import { ExternalLink, Github } from "lucide-react";
 import type { Project } from "@/lib/types";
 
-export function ProjectsSection() {
+interface ProjectsSectionProps {
+  dictionary: any;
+}
+
+export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
   const PROJECT_DATA: Project[] = [
     {
-      title: "Spring Distributed Systems",
-      description:
-        "Movie Rating System implementation with Distributed Systems using Spring framework, RabbitMQ for messaging, and Redis for caching. Containerized with Docker. Applied Agile methodology and involved in all SDLC phases.",
+      title: dictionary.projects.items.springDistributed.title,
+      description: dictionary.projects.items.springDistributed.description,
       image: "/spring-boot-distributed-system-architecture.jpg",
       technologies: ["Java", "Spring", "RabbitMQ", "Redis", "Docker", "MySQL", "Log4j", "Slf4j"],
       github: "https://github.com/serdarsenturk/spring-distributed-systems",
       demo: "https://github.com/serdarsenturk/spring-distributed-systems",
     },
     {
-      title: "Java Distributed Systems",
-      description:
-        "Movie Rating System with distributed architecture using Java/J2EE, RESTful APIs, and MySQL. Implements OOP principles, design patterns, and includes DAO pattern with abstract classes and interfaces.",
+      title: dictionary.projects.items.javaDistributed.title,
+      description: dictionary.projects.items.javaDistributed.description,
       image: "/java-microservices-architecture-diagram.jpg",
       technologies: ["Java", "J2EE", "RESTful API", "MySQL", "Maven", "Postman", "Git"],
       github: "https://github.com/serdarsenturk/java-distributed-systems",
       demo: "https://github.com/serdarsenturk/java-distributed-systems",
     },
     {
-      title: "Django Movie Rating System",
-      description:
-        "Backend section of a movie rating website built with Django. Implements MVT architecture, RESTful APIs, and automated functional testing. Uses MySQL database with Django ORM.",
+      title: dictionary.projects.items.djangoMovie.title,
+      description: dictionary.projects.items.djangoMovie.description,
       image: "/agile-retrospective-tool-interface.jpg",
       technologies: [
         "Python",
@@ -49,9 +50,8 @@ export function ProjectsSection() {
       demo: "https://github.com/serdarsenturk/django-movie-rating",
     },
     {
-      title: "Easy Retrospective",
-      description:
-        "Retro tool backend application for agile teams to conduct retrospective meetings. Built with Python and modern backend practices.",
+      title: dictionary.projects.items.easyRetrospective.title,
+      description: dictionary.projects.items.easyRetrospective.description,
       image: "/digital-scoreboard-web-app.jpg",
       technologies: ["Python", "JavaScript", "Flask", "PostgreSQL", "NextJS", "Auth0"],
       github: "https://github.com/serdarsenturk/easyretrospective",
@@ -74,12 +74,10 @@ export function ProjectsSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-            Featured Projects
+            {dictionary.projects.title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl leading-relaxed">
-            A selection of projects showcasing distributed systems, backend
-            development, and full-stack applications. Each project demonstrates
-            different aspects of modern software development.
+            {dictionary.projects?.subtitle || "A selection of projects showcasing distributed systems, backend development, and full-stack applications. Each project demonstrates different aspects of modern software development."}
           </p>
         </div>
 
@@ -140,7 +138,7 @@ export function ProjectsSection() {
                         rel="noopener noreferrer"
                       >
                         <Github className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-all duration-500" />
-                        <span className="relative z-10">Code</span>
+                        <span className="relative z-10">{dictionary.projects.buttons.viewCode}</span>
                       </a>
                     </Button>
                   </div>
@@ -157,7 +155,7 @@ export function ProjectsSection() {
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 group-hover/btn:scale-110 transition-all duration-500" />
-                        <span className="relative z-10">View</span>
+                        <span className="relative z-10">{dictionary.projects.buttons.liveDemo}</span>
                       </a>
                     </Button>
                   </div>

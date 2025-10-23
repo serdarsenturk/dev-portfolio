@@ -9,9 +9,21 @@ interface CharacterLevelCardProps {
   level: number;
   experience: number;
   experienceToNext: number;
+  dictionary?: {
+    skills: {
+      level: string;
+      developerLevel: string;
+      experience: string;
+      xpToNextLevel: string;
+      levelBenefits: string;
+      advancedProblemSolving: string;
+      mentorshipLeadership: string;
+      architectureDesign: string;
+    };
+  };
 }
 
-export function LevelCard({ level, experience, experienceToNext }: CharacterLevelCardProps) {
+export function LevelCard({ level, experience, experienceToNext, dictionary }: CharacterLevelCardProps) {
   const experienceProgress = (experience / experienceToNext) * 100;
   const experienceRemaining = experienceToNext - experience;
 
@@ -26,10 +38,10 @@ export function LevelCard({ level, experience, experienceToNext }: CharacterLeve
             </div>
             <div>
               <h3 className="text-2xl font-bold text-slate-800 dark:text-white group-hover:text-yellow-600 dark:group-hover:text-yellow-300 transition-colors duration-300">
-                Level {level}
+{dictionary.skills.level} {level}
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
-                Developer Level
+{dictionary.skills.developerLevel}
               </p>
             </div>
           </div>
@@ -39,7 +51,7 @@ export function LevelCard({ level, experience, experienceToNext }: CharacterLeve
         <div className="space-y-3">
           <div className="flex justify-between items-center text-sm">
             <span className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
-              Experience
+              {dictionary.skills.experience}
             </span>
             <span className="text-slate-700 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-white transition-colors duration-300 font-semibold">
               {experience.toLocaleString()} / {experienceToNext.toLocaleString()}
@@ -53,7 +65,7 @@ export function LevelCard({ level, experience, experienceToNext }: CharacterLeve
           
           <div className="flex justify-between items-center text-xs">
             <span className="text-slate-500 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors duration-300">
-              {experienceRemaining.toLocaleString()} XP to next level
+{experienceRemaining.toLocaleString()} {dictionary.skills.xpToNextLevel}
             </span>
             <span className="text-slate-500 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors duration-300">
               {Math.round(experienceProgress)}%
@@ -65,20 +77,20 @@ export function LevelCard({ level, experience, experienceToNext }: CharacterLeve
         <div className="space-y-2">
           <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-200 group-hover:text-slate-800 dark:group-hover:text-white transition-colors duration-300 flex items-center gap-2">
             <Award className="h-4 w-4 text-blue-500 dark:text-blue-400" />
-            Level {level} Benefits:
+{dictionary.skills.level} {level} {dictionary.skills.levelBenefits}
           </h4>
           <div className="grid grid-cols-1 gap-2 text-xs">
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
               <TrendingUp className="h-3 w-3 text-green-500 dark:text-green-400" />
-              <span>Advanced problem-solving abilities</span>
+              <span>{dictionary.skills.advancedProblemSolving}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
               <Star className="h-3 w-3 text-yellow-500 dark:text-yellow-400" />
-              <span>Mentorship and leadership skills</span>
+              <span>{dictionary.skills.mentorshipLeadership}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
               <Award className="h-3 w-3 text-purple-500 dark:text-purple-400" />
-              <span>Architecture and design expertise</span>
+              <span>{dictionary.skills.architectureDesign}</span>
             </div>
           </div>
         </div>

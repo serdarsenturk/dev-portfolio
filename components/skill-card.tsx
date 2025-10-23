@@ -9,9 +9,23 @@ import { Star, Zap } from "lucide-react";
 interface CharacterSkillCardProps {
   skill: Skill;
   delay?: number;
+  dictionary?: {
+    skills: {
+      proficiency: {
+        master: string;
+        expert: string;
+        advanced: string;
+        intermediate: string;
+        beginner: string;
+      };
+      level: string;
+      proficient: string;
+      bonus: string;
+    };
+  };
 }
 
-export function SkillCard({ skill, delay = 0 }: CharacterSkillCardProps) {
+export function SkillCard({ skill, delay = 0, dictionary }: CharacterSkillCardProps) {
   const { name, level, description, icon: Icon, isProficient, bonus = 0 } = skill;
   
   const getLevelColor = (level: number) => {
@@ -29,11 +43,11 @@ export function SkillCard({ skill, delay = 0 }: CharacterSkillCardProps) {
   };
 
   const getProficiencyLevel = (level: number) => {
-    if (level >= 18) return "Master";
-    if (level >= 15) return "Expert";
-    if (level >= 12) return "Advanced";
-    if (level >= 8) return "Intermediate";
-    return "Beginner";
+    if (level >= 18) return dictionary.skills.proficiency.master;
+    if (level >= 15) return dictionary.skills.proficiency.expert;
+    if (level >= 12) return dictionary.skills.proficiency.advanced;
+    if (level >= 8) return dictionary.skills.proficiency.intermediate;
+    return dictionary.skills.proficiency.beginner;
   };
 
   return (
@@ -55,12 +69,12 @@ export function SkillCard({ skill, delay = 0 }: CharacterSkillCardProps) {
               <Badge 
                 className={`${getLevelBg(level)} ${getLevelColor(level)} text-xs font-bold px-2 py-0.5`}
               >
-                Level {level}
+{dictionary.skills.level} {level}
               </Badge>
               {isProficient && (
                 <Badge className="bg-purple-500/20 border-purple-500/30 text-purple-600 dark:text-purple-300 text-xs px-2 py-0.5">
                   <Star className="h-3 w-3 mr-1" />
-                  Proficient
+                  {dictionary.skills.proficient}
                 </Badge>
               )}
             </div>
@@ -89,7 +103,7 @@ export function SkillCard({ skill, delay = 0 }: CharacterSkillCardProps) {
             {bonus > 0 && (
               <Badge className="bg-cyan-500/20 border-cyan-500/30 text-cyan-600 dark:text-cyan-300 px-2 py-0.5">
                 <Zap className="h-3 w-3 mr-1" />
-                +{bonus} Bonus
++{bonus} {dictionary.skills.bonus}
               </Badge>
             )}
           </div>
