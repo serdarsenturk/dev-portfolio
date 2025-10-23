@@ -15,8 +15,11 @@ import {
   MessageSquare,
   Phone,
   Send,
+  AlertCircle,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { emailService } from "@/lib/email-service";
+import { DEVELOPER_INFO } from "@/lib/constants";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -26,20 +29,49 @@ export function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    emailService.initialize();
+  }, []);
 
   const onMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsError(false);
+    setErrorMessage("");
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+    try {
+      const result = await emailService.sendEmail(formData);
+      
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        
+        // Close success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error(result.error || 'Failed to send email');
+      }
+    } catch (error) {
+      console.error('Email send error:', error);
+      setIsError(true);
+      setErrorMessage(
+        error instanceof Error 
+          ? error.message 
+          : 'An error occurred. Please try again.'
+      );
+      
+      setTimeout(() => {
+        setIsError(false);
+        setErrorMessage("");
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,7 +94,7 @@ export function ContactSection() {
               Get In Touch
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hi, I&apos;m <span className="font-semibold text-primary">Serdar Senturk</span>. I&apos;m always open to discussing new projects, creative ideas,
+              Hi, I&apos;m <span className="font-semibold text-primary">{DEVELOPER_INFO.NAME}</span>. I&apos;m always open to discussing new projects, creative ideas,
               or opportunities.
             </p>
           </div>
@@ -81,10 +113,10 @@ export function ContactSection() {
                       Email
                     </p>
                     <a
-                      href="mailto:serdarsenturk@windowslive.com"
+                      href={`mailto:${DEVELOPER_INFO.EMAIL}`}
                       className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
                     >
-                      serdarsenturk@windowslive.com
+                      {DEVELOPER_INFO.EMAIL}
                     </a>
                   </div>
                 </div>
@@ -101,10 +133,10 @@ export function ContactSection() {
                       Phone
                     </p>
                     <a
-                      href="tel:+905334669941"
+                      href={`tel:${DEVELOPER_INFO.PHONE}`}
                       className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
                     >
-                      +90 533 466 9941
+                      {DEVELOPER_INFO.PHONE}
                     </a>
                   </div>
                 </div>
@@ -119,19 +151,19 @@ export function ContactSection() {
                   {[
                     {
                       icon: Github,
-                      href: "https://github.com/serdarsenturk",
+                      href: DEVELOPER_INFO.GITHUB_URL,
                       label: "GitHub",
                       color: "hover:bg-foreground/10",
                     },
                     {
                       icon: Linkedin,
-                      href: "https://www.linkedin.com/in/serdarsenturk",
+                      href: DEVELOPER_INFO.LINKEDIN_URL,
                       label: "LinkedIn",
                       color: "hover:bg-blue-500/10",
                     },
                     {
                       icon: Mail,
-                      href: "mailto:serdarsenturk@windowslive.com",
+                      href: `mailto:${DEVELOPER_INFO.EMAIL}`,
                       label: "Email",
                       color: "hover:bg-primary/10",
                     },
@@ -156,7 +188,7 @@ export function ContactSection() {
                   <span className="font-semibold text-foreground">
                     Response time:
                   </span>{" "}
-                  Usually within 24 hours
+                  {DEVELOPER_INFO.RESPONSE_TIME}
                 </p>
               </Card>
             </div>
@@ -175,6 +207,24 @@ export function ContactSection() {
                       </h3>
                       <p className="text-xs sm:text-sm text-muted-foreground">
                         I&apos;ll get back to you soon.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {isError && (
+                <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
+                  <div className="text-center space-y-3">
+                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-500/10 animate-scale-in">
+                      <AlertCircle className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                    </div>
+                    <div>
+                      <h3 className="text-base sm:text-lg font-semibold mb-1 text-red-600">
+                        Error!
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        {errorMessage}
                       </p>
                     </div>
                   </div>
@@ -261,7 +311,7 @@ export function ContactSection() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p className="animate-fade-in">
-              © {new Date().getFullYear()} Serdar Senturk. All rights reserved.
+              © {new Date().getFullYear()} {DEVELOPER_INFO.NAME}. All rights reserved.
             </p>
             <div
               className="flex items-center gap-4 animate-fade-in"
@@ -269,12 +319,12 @@ export function ContactSection() {
             >
               <div className="flex gap-2">
                 {[
-                  { icon: Github, href: "https://github.com/serdarsenturk" },
+                  { icon: Github, href: DEVELOPER_INFO.GITHUB_URL },
                   {
                     icon: Linkedin,
-                    href: "https://www.linkedin.com/in/serdarsenturk",
+                    href: DEVELOPER_INFO.LINKEDIN_URL,
                   },
-                  { icon: Mail, href: "mailto:serdarsenturk@windowslive.com" },
+                  { icon: Mail, href: `mailto:${DEVELOPER_INFO.EMAIL}` },
                 ].map(({ icon: Icon, href }, i) => (
                   <a
                     key={i}

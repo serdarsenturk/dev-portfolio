@@ -60,10 +60,36 @@ export const SECTION_IDS: SectionIds = {
 
 // Developer information
 export const DEVELOPER_INFO: DeveloperInfo = {
+  // Personal Information
+  NAME: "Serdar Senturk",
   TITLE: "Software Developer",
   EMAIL: "serdarsenturk@windowslive.com",
+  PHONE: "+90 533 466 9941",
+  
+  // Social Links
   GITHUB_URL: "https://github.com/serdarsenturk",
   LINKEDIN_URL: "https://www.linkedin.com/in/serdarsenturk",
+  
+  // Professional Information
+  PROFESSION: "Full-Stack Developer",
+  SPECIALIZATION: "Backend Development, Microservices, Cloud Architecture",
+  EXPERIENCE_YEARS: "3+ years",
+  LOCATION: "Turkey",
+  
+  // Contact Response
+  RESPONSE_TIME: "Usually within 24 hours",
+  
+  // Additional Information
+  BIO_SHORT: "Creative developer crafting beautiful digital experiences",
+  BIO_LONG: "Passionate about building scalable applications and solving complex problems with elegant solutions. I love working with modern technologies and creating user-friendly experiences.",
+  
+  // Skills Summary
+  PRIMARY_SKILLS: ["Backend Development", "Microservices", "Cloud Architecture", "Full-Stack Development"],
+  TECHNOLOGIES: ["C#", "TypeScript", "Angular", ".NET Core", "PostgreSQL", "Docker", "Azure"],
+  
+  // Availability
+  AVAILABILITY: "Open to new opportunities",
+  PREFERRED_LOCATION: "Remote or Istanbul, Turkey",
 } as const;
 
 // Navigation items

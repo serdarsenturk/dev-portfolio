@@ -61,10 +61,23 @@ export interface SectionIds {
 
 // Developer info types
 export interface DeveloperInfo {
+  NAME: string;
   TITLE: string;
   EMAIL: string;
+  PHONE: string;
   GITHUB_URL: string;
   LINKEDIN_URL: string;
+  PROFESSION: string;
+  SPECIALIZATION: string;
+  EXPERIENCE_YEARS: string;
+  LOCATION: string;
+  RESPONSE_TIME: string;
+  BIO_SHORT: string;
+  BIO_LONG: string;
+  PRIMARY_SKILLS: string[];
+  TECHNOLOGIES: string[];
+  AVAILABILITY: string;
+  PREFERRED_LOCATION: string;
 }
 
 // Education types
