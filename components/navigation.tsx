@@ -1,47 +1,69 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Menu, Download, ChevronDown } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { NAVIGATION_ITEMS, SECTION_IDS } from "@/lib/constants"
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { NAVIGATION_ITEMS, SECTION_IDS } from "@/lib/constants";
+import { Download, Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 
-export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("")
+interface NavigationProps {
+  dictionary: {
+    navigation: {
+      about: string;
+      experience: string;
+      skills: string;
+      projects: string;
+      education: string;
+      languages: string;
+      contact: string;
+      download: string;
+      resume: string;
+      cv: string;
+    };
+  };
+}
+
+export function Navigation({ dictionary }: NavigationProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 20);
 
       const sections = [
-        SECTION_IDS.ABOUT, 
-        SECTION_IDS.EXPERIENCE, 
-        SECTION_IDS.CHARACTER_SHEET, 
-        SECTION_IDS.PROJECTS, 
-        SECTION_IDS.EDUCATION, 
-        SECTION_IDS.LANGUAGES, 
-        SECTION_IDS.CONTACT
-      ]
-      
-      const current = sections.find((section) => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      
-      if (current) setActiveSection(current)
-    }
+        SECTION_IDS.ABOUT,
+        SECTION_IDS.EXPERIENCE,
+        SECTION_IDS.CHARACTER_SHEET,
+        SECTION_IDS.PROJECTS,
+        SECTION_IDS.EDUCATION,
+        SECTION_IDS.LANGUAGES,
+        SECTION_IDS.CONTACT,
+      ];
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      const current = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      if (current) setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -69,7 +91,7 @@ export function Navigation() {
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             <div className="flex items-center gap-1">
               {NAVIGATION_ITEMS.map((item) => {
-                const isActive = activeSection === item.href.slice(1)
+                const isActive = activeSection === item.href.slice(1);
                 return (
                   <a
                     key={item.label}
@@ -80,22 +102,22 @@ export function Navigation() {
                         : "text-muted-foreground hover:text-foreground hover:bg-gray-100/50 dark:hover:bg-white/5 backdrop-blur-sm"
                     }`}
                   >
-                    {item.label}
+                    {dictionary.navigation[item.label.replace('navigation.', '') as keyof typeof dictionary.navigation]}
                   </a>
-                )
+                );
               })}
             </div>
 
             <div className="flex items-center gap-3">
               <Button
                 size="sm"
-                variant="outline"
-                className="gap-2 bg-primary/10 dark:bg-white/10 backdrop-blur-sm border border-primary/20 dark:border-white/20 hover:bg-primary/20 dark:hover:bg-white/20 text-primary dark:text-white hover:text-white dark:hover:text-black transition-all duration-300 rounded-full px-3 py-2 text-sm whitespace-nowrap"
+                className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-full px-3 py-2 text-sm whitespace-nowrap"
               >
                 <Download className="h-4 w-4" />
-                Resume
+                {dictionary.navigation.download}
               </Button>
               
+              <LanguageSwitcher />
               <ThemeToggle />
             </div>
           </div>
@@ -105,7 +127,7 @@ export function Navigation() {
             {/* Navigation Items - All items with ultra compact spacing */}
             <div className="flex items-center gap-0.5 flex-1 justify-center min-w-0 overflow-hidden">
               {NAVIGATION_ITEMS.map((item) => {
-                const isActive = activeSection === item.href.slice(1)
+                const isActive = activeSection === item.href.slice(1);
                 return (
                   <a
                     key={item.label}
@@ -116,9 +138,9 @@ export function Navigation() {
                         : "text-muted-foreground hover:text-foreground hover:bg-gray-100/50 dark:hover:bg-white/5 backdrop-blur-sm"
                     }`}
                   >
-                    {item.label}
+                    {dictionary.navigation[item.label.replace('navigation.', '') as keyof typeof dictionary.navigation]}
                   </a>
-                )
+                );
               })}
             </div>
 
@@ -126,12 +148,11 @@ export function Navigation() {
             <div className="flex items-center gap-1.5 flex-shrink-0">
               <Button
                 size="sm"
-                variant="outline"
-                className="gap-1 bg-primary/10 dark:bg-white/10 backdrop-blur-sm border border-primary/20 dark:border-white/20 hover:bg-primary/20 dark:hover:bg-white/20 text-primary dark:text-white hover:text-white dark:hover:text-black transition-all duration-300 rounded-full px-2 py-1 text-xs whitespace-nowrap"
+                className="gap-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-full px-2 py-1 text-xs whitespace-nowrap"
               >
                 <Download className="h-3 w-3" />
-                <span className="hidden sm:inline">Resume</span>
-                <span className="sm:hidden">CV</span>
+                <span className="hidden sm:inline">{dictionary.navigation.resume}</span>
+                <span className="sm:hidden">{dictionary.navigation.cv}</span>
               </Button>
               
               <ThemeToggle />
@@ -158,7 +179,7 @@ export function Navigation() {
                         className="block px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-all duration-300"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {item.label}
+                        {dictionary.navigation[item.label.replace('navigation.', '') as keyof typeof dictionary.navigation]}
                       </a>
                     ))}
                   </div>
@@ -166,10 +187,10 @@ export function Navigation() {
                   <div className="pt-4 border-t">
                     <Button
                       size="sm"
-                      className="w-full gap-2 bg-primary/10 dark:bg-white/10 backdrop-blur-sm border border-primary/20 dark:border-white/20 hover:bg-primary/20 dark:hover:bg-white/20 text-primary dark:text-white hover:text-white dark:hover:text-black transition-all duration-300 rounded-lg px-4 py-3 text-sm"
+                      className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg px-4 py-3 text-sm"
                     >
                       <Download className="h-4 w-4" />
-                      Download Resume
+                      {dictionary.navigation.download}
                     </Button>
                   </div>
                 </div>
@@ -179,5 +200,5 @@ export function Navigation() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
