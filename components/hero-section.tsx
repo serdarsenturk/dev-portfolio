@@ -19,7 +19,24 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  dictionary: {
+    hero: {
+      greeting: string;
+      name: string;
+      title: string;
+      description: string;
+      cta: string;
+      viewProjects: string;
+      getInTouch: string;
+      available: string;
+      subtitle1: string;
+      subtitle2: string;
+    };
+  };
+}
+
+export function HeroSection({ dictionary }: HeroSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [typedJobTitle, setTypedJobTitle] = useState("");
 
@@ -75,7 +92,7 @@ export function HeroSection() {
               >
                 <Sparkles className="h-3.5 w-3.5 animate-pulse text-primary" />
                 <span className="animate-text-shimmer font-medium text-sm sm:text-base">
-                  Available for work
+                  {dictionary.hero.available}
                 </span>
               </Badge>
             </div>
@@ -98,18 +115,14 @@ export function HeroSection() {
               className="text-lg sm:text-xl md:text-2xl text-muted-foreground text-pretty animate-fade-in-up font-medium"
               style={{ animationDelay: "0.2s" }}
             >
-              Building scalable and reliable applications using Object-Oriented
-              Design and SOLID principles.
+              {dictionary.hero.subtitle1}
             </p>
 
             <p
               className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}
             >
-              Computer Engineering graduate with 3 years of experience in
-              backend and frontend development. Specialized in .NET, C#,
-              Angular, and distributed systems. Passionate about creating
-              high-performance applications and learning new technologies.
+              {dictionary.hero.subtitle2}
             </p>
 
             <div
@@ -124,7 +137,7 @@ export function HeroSection() {
                   className="relative group/btn overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500 shadow-2xl hover:shadow-primary/40 px-8 py-4 text-lg font-semibold"
                 >
                   <span className="relative z-10 flex items-center gap-3 text-white">
-                    View Projects
+                    {dictionary.hero.viewProjects}
                     <ArrowDown className="h-5 w-5 group-hover/btn:translate-y-1 group-hover/btn:rotate-180 transition-all duration-500" />
                   </span>
                   <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent translate-y-full group-hover/btn:translate-y-0 transition-all duration-500" />
@@ -139,7 +152,7 @@ export function HeroSection() {
                   onClick={handleScrollToContact}
                   className="relative group/btn overflow-hidden bg-transparent border-2 border-primary/50 hover:bg-primary/10 hover:border-primary hover:text-primary transition-all duration-500 shadow-xl hover:shadow-primary/20 px-8 py-4 text-lg font-semibold"
                 >
-                  <span className="relative z-10">Get in Touch</span>
+                  <span className="relative z-10">{dictionary.hero.getInTouch}</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 translate-x-full group-hover/btn:translate-x-0 transition-all duration-500" />
                 </Button>
               </div>

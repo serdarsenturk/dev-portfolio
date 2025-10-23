@@ -4,14 +4,34 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Briefcase, Calendar } from "lucide-react"
 
-export function ExperienceSection() {
+interface ExperienceSectionProps {
+  dictionary: {
+    experience: {
+      title: string;
+      subtitle: string;
+      description: string;
+      positions: {
+        juniorDeveloper: string;
+        intern: string;
+      };
+      companies: {
+        piWorks: string;
+      };
+      descriptions: {
+        juniorDeveloper: string;
+        intern: string;
+      };
+    };
+  };
+}
+
+export function ExperienceSection({ dictionary }: ExperienceSectionProps) {
   const experiences = [
     {
-      title: "Junior Software Developer",
-      company: "P.I. Works, Inc.",
+      title: dictionary.experience.positions.juniorDeveloper,
+      company: dictionary.experience.companies.piWorks,
       period: "Oct 2022 - Mar 2025",
-      description:
-        "Contributed actively to both backend and frontend development within an Agile team, focusing on AI-driven mobile network solutions. Developed robust backend applications using C# and .NET Core/ASP.NET Core, managed large-scale databases (Oracle, PostgreSQL), and built user interfaces using Angular and AngularJS. Applied Microservices and Microfrontend architectures while managing CI/CD and deployment with Docker and Kubernetes.",
+      description: dictionary.experience.descriptions.juniorDeveloper,
       technologies: [
         "C#",
         ".NET Core",
@@ -25,11 +45,10 @@ export function ExperienceSection() {
       ],
     },
     {
-      title: "Software Engineering Intern",
-      company: "P.I. Works, Inc.",
+      title: dictionary.experience.positions.intern,
+      company: dictionary.experience.companies.piWorks,
       period: "Jun 2022 - Sep 2022",
-      description:
-        "Gained practical experience in full-stack web application development and system migration. Involved in web application development using ASP.NET Core, Angular, NHibernate, and Kubernetes. Migrated a legacy WPF application to a .NET Framework web application, enabling multi-platform use for customers.",
+      description: dictionary.experience.descriptions.intern,
       technologies: ["ASP.NET Core", "Angular", "NHibernate", "Kubernetes", "Ocelot API Gateway"],
     },
   ]
@@ -38,9 +57,9 @@ export function ExperienceSection() {
     <section id="experience" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-3 mb-8 sm:mb-10">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">Experience</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">{dictionary.experience.title}</h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl">
-            My professional journey in software development.
+            {dictionary.experience.description}
           </p>
         </div>
 

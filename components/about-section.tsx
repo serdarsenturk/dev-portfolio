@@ -5,10 +5,36 @@ import { Card } from "@/components/ui/card";
 import { Code2, Palette, Users, Zap } from "lucide-react";
 import type { SkillCategory, HighlightItem } from "@/lib/types";
 
-export function AboutSection() {
+interface AboutSectionProps {
+  dictionary: {
+    about: {
+      title: string;
+      subtitle: string;
+      description1: string;
+      description2: string;
+      highlights: {
+        cleanCode: { title: string; description: string };
+        performance: { title: string; description: string };
+        fullStack: { title: string; description: string };
+        collaboration: { title: string; description: string };
+      };
+      skillCategories: {
+        programmingLanguages: string;
+        frameworksTechnologies: string;
+        databases: string;
+        devopsCloud: string;
+        webServicesApis: string;
+        toolsMethodologies: string;
+      };
+      technicalSkills: string;
+    };
+  };
+}
+
+export function AboutSection({ dictionary }: AboutSectionProps) {
   const SKILL_CATEGORIES: SkillCategory[] = [
     {
-      category: "Programming Languages",
+      category: dictionary.about.skillCategories.programmingLanguages,
       skills: [
         "Python",
         "Java",
@@ -21,7 +47,7 @@ export function AboutSection() {
       featured: true,
     },
     {
-      category: "Frameworks & Technologies",
+      category: dictionary.about.skillCategories.frameworksTechnologies,
       skills: [
         ".NET Core",
         "ASP.NET Core",
@@ -41,7 +67,7 @@ export function AboutSection() {
       featured: true,
     },
     {
-      category: "Databases",
+      category: dictionary.about.skillCategories.databases,
       skills: [
         "PostgreSQL",
         "Oracle Database",
@@ -52,7 +78,7 @@ export function AboutSection() {
       ],
     },
     {
-      category: "DevOps & Cloud",
+      category: dictionary.about.skillCategories.devopsCloud,
       skills: [
         "Docker",
         "Kubernetes",
@@ -66,7 +92,7 @@ export function AboutSection() {
       ],
     },
     {
-      category: "Web Services & APIs",
+      category: dictionary.about.skillCategories.webServicesApis,
       skills: [
         "RESTful APIs",
         "SOAP",
@@ -77,7 +103,7 @@ export function AboutSection() {
       ],
     },
     {
-      category: "Tools & Methodologies",
+      category: dictionary.about.skillCategories.toolsMethodologies,
       skills: [
         "Maven",
         "Git",
@@ -100,27 +126,23 @@ export function AboutSection() {
   const HIGHLIGHT_ITEMS: HighlightItem[] = [
     {
       icon: Code2,
-      title: "Clean Code",
-      description:
-        "Writing maintainable, scalable code following OOP and SOLID principles.",
+      title: dictionary.about.highlights.cleanCode.title,
+      description: dictionary.about.highlights.cleanCode.description,
     },
     {
       icon: Zap,
-      title: "Performance",
-      description:
-        "Building high-performance backend systems and distributed applications.",
+      title: dictionary.about.highlights.performance.title,
+      description: dictionary.about.highlights.performance.description,
     },
     {
       icon: Palette,
-      title: "Full-Stack",
-      description:
-        "Experience in both backend (.NET, Spring) and frontend (Angular, React) development.",
+      title: dictionary.about.highlights.fullStack.title,
+      description: dictionary.about.highlights.fullStack.description,
     },
     {
       icon: Users,
-      title: "Collaboration",
-      description:
-        "Working effectively in Agile teams with CI/CD and modern development practices.",
+      title: dictionary.about.highlights.collaboration.title,
+      description: dictionary.about.highlights.collaboration.description,
     },
   ];
 
@@ -141,7 +163,7 @@ export function AboutSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-4 mb-8 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-primary dark:from-foreground dark:to-accent bg-clip-text text-transparent">
-                  About Me
+                  {dictionary.about?.title || 'About Me'}
                 </h2>
         </div>
 
@@ -186,16 +208,10 @@ export function AboutSection() {
 
           <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground text-pretty leading-relaxed">
-              As a passionate Computer Engineering graduate with 3+ years of hands-on experience at P.I Works, 
-              I've dedicated my career to crafting robust backend solutions that power real-world applications. 
-              My expertise spans modern technologies including C#, .NET Core, Java, Spring Boot, and microservices architecture, 
-              with recent focus on full-stack development using Next.js, TypeScript, and mobile development with Expo and React Native.
+              {dictionary.about.description1}
             </p>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-              What drives me is the challenge of solving intricate problems through clean, maintainable code. 
-              I thrive in collaborative environments where I can contribute to meaningful projects while continuously 
-              expanding my technical horizons. My commitment to best practices, combined with a growth mindset, 
-              makes me a valuable asset to any development team looking to build exceptional software solutions.
+              {dictionary.about.description2}
             </p>
           </div>
         </div>
@@ -224,7 +240,7 @@ export function AboutSection() {
 
         <div>
           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-primary dark:from-foreground dark:to-accent bg-clip-text text-transparent">
-            Technical Skills
+            {dictionary.about.technicalSkills}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {SKILL_CATEGORIES.map((category, categoryIndex) => (

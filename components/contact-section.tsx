@@ -21,7 +21,43 @@ import { useState, useEffect } from "react";
 import { emailService } from "@/lib/email-service";
 import { DEVELOPER_INFO } from "@/lib/constants";
 
-export function ContactSection() {
+interface ContactSectionProps {
+  dictionary: {
+    contact: {
+      title: string;
+      subtitle: string;
+      name: string;
+      email: string;
+      message: string;
+      send: string;
+      sending: string;
+      sendMessage: string;
+      success: string;
+      error: string;
+      social: {
+        github: string;
+        linkedin: string;
+        email: string;
+      };
+      form: {
+        placeholder: string;
+        nameLabel: string;
+        emailLabel: string;
+        messageLabel: string;
+      };
+      badge: string;
+      connectWithMe: string;
+      responseTime: string;
+      responseTimeValue: string;
+      messageSent: string;
+      messageSentSubtitle: string;
+      emailPlaceholder: string;
+      messagePlaceholder: string;
+    };
+  };
+}
+
+export function ContactSection({ dictionary }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -87,15 +123,14 @@ export function ContactSection() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-3 sm:mb-4">
               <MessageSquare className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
-                Let&apos;s Connect
+                {dictionary.contact.badge}
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
-              Get In Touch
+              {dictionary.contact.title}
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hi, I&apos;m <span className="font-semibold text-primary">{DEVELOPER_INFO.NAME}</span>. I&apos;m always open to discussing new projects, creative ideas,
-              or opportunities.
+              {dictionary.contact.subtitle.replace('{name}', DEVELOPER_INFO.NAME)}
             </p>
           </div>
 
@@ -145,26 +180,26 @@ export function ContactSection() {
               {/* Social Links Card */}
               <Card className="p-4 border-primary/10 bg-gradient-to-br from-card to-card/50">
                 <p className="text-xs font-medium text-muted-foreground mb-3">
-                  Connect with me
+                  {dictionary.contact.connectWithMe}
                 </p>
                 <div className="flex gap-2">
                   {[
                     {
                       icon: Github,
                       href: DEVELOPER_INFO.GITHUB_URL,
-                      label: "GitHub",
+                      label: dictionary.contact.social.github,
                       color: "hover:bg-foreground/10",
                     },
                     {
                       icon: Linkedin,
                       href: DEVELOPER_INFO.LINKEDIN_URL,
-                      label: "LinkedIn",
+                      label: dictionary.contact.social.linkedin,
                       color: "hover:bg-blue-500/10",
                     },
                     {
                       icon: Mail,
                       href: `mailto:${DEVELOPER_INFO.EMAIL}`,
-                      label: "Email",
+                      label: dictionary.contact.social.email,
                       color: "hover:bg-primary/10",
                     },
                   ].map(({ icon: Icon, href, label, color }) => (
@@ -186,9 +221,9 @@ export function ContactSection() {
               <Card className="p-4 border-primary/10 bg-gradient-to-br from-primary/5 to-accent/5">
                 <p className="text-xs leading-relaxed text-muted-foreground">
                   <span className="font-semibold text-foreground">
-                    Response time:
+                    {dictionary.contact.responseTime}
                   </span>{" "}
-                  {DEVELOPER_INFO.RESPONSE_TIME}
+                  {dictionary.contact.responseTimeValue}
                 </p>
               </Card>
             </div>
@@ -203,10 +238,10 @@ export function ContactSection() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-semibold mb-1">
-                        Message Sent!
+                        {dictionary.contact.messageSent}
                       </h3>
                       <p className="text-xs sm:text-sm text-muted-foreground">
-                        I&apos;ll get back to you soon.
+                        {dictionary.contact.messageSentSubtitle}
                       </p>
                     </div>
                   </div>
@@ -221,7 +256,7 @@ export function ContactSection() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-semibold mb-1 text-red-600">
-                        Error!
+                        {dictionary.contact.error}
                       </h3>
                       <p className="text-xs sm:text-sm text-muted-foreground">
                         {errorMessage}
@@ -235,11 +270,11 @@ export function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div className="space-y-1.5 sm:space-y-2">
                     <Label htmlFor="name" className="text-xs sm:text-sm font-medium">
-                      Name
+                      {dictionary.contact.form.nameLabel}
                     </Label>
                     <Input
                       id="name"
-                      placeholder="John Doe"
+                      placeholder={dictionary.contact.form.placeholder}
                       value={formData.name}
                       onChange={(event: any) =>
                         setFormData({ ...formData, name: event.target.value })
@@ -251,12 +286,12 @@ export function ContactSection() {
                   </div>
                   <div className="space-y-1.5 sm:space-y-2">
                     <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
-                      Email
+                      {dictionary.contact.form.emailLabel}
                     </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder={dictionary.contact.emailPlaceholder}
                       value={formData.email}
                       onChange={(event: any) =>
                         setFormData({ ...formData, email: event.target.value })
@@ -269,11 +304,11 @@ export function ContactSection() {
                 </div>
                 <div className="space-y-1.5 sm:space-y-2">
                   <Label htmlFor="message" className="text-xs sm:text-sm font-medium">
-                    Message
+                    {dictionary.contact.form.messageLabel}
                   </Label>
                   <Textarea
                     id="message"
-                    placeholder="Tell me about your project or just say hi..."
+                    placeholder={dictionary.contact.messagePlaceholder}
                     rows={4}
                     value={formData.message}
                     onChange={(event: any) =>
@@ -292,12 +327,12 @@ export function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <div className="h-4 w-4 mr-2 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      Sending...
+                      {dictionary.contact.sending}
                     </>
                   ) : (
                     <>
                       <Send className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
-                      Send Message
+                      {dictionary.contact.sendMessage}
                     </>
                   )}
                 </Button>
