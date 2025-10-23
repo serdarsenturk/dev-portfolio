@@ -94,13 +94,13 @@ export const DEVELOPER_INFO: DeveloperInfo = {
 
 // Navigation items
 export const NAVIGATION_ITEMS: NavigationItem[] = [
-  { label: "About", href: `#${SECTION_IDS.ABOUT}` },
-  { label: "Experience", href: `#${SECTION_IDS.EXPERIENCE}` },
-  { label: "Skills", href: `#${SECTION_IDS.CHARACTER_SHEET}` },
-  { label: "Projects", href: `#${SECTION_IDS.PROJECTS}` },
-  { label: "Education", href: `#${SECTION_IDS.EDUCATION}` },
-  { label: "Languages", href: `#${SECTION_IDS.LANGUAGES}` },
-  { label: "Contact", href: `#${SECTION_IDS.CONTACT}` },
+  { label: "navigation.about", href: `#${SECTION_IDS.ABOUT}` },
+  { label: "navigation.experience", href: `#${SECTION_IDS.EXPERIENCE}` },
+  { label: "navigation.skills", href: `#${SECTION_IDS.CHARACTER_SHEET}` },
+  { label: "navigation.projects", href: `#${SECTION_IDS.PROJECTS}` },
+  { label: "navigation.education", href: `#${SECTION_IDS.EDUCATION}` },
+  { label: "navigation.languages", href: `#${SECTION_IDS.LANGUAGES}` },
+  { label: "navigation.contact", href: `#${SECTION_IDS.CONTACT}` },
 ] as const;
 
 // Contact options - will be imported with icons in components

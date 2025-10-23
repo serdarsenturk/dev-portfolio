@@ -1,3 +1,6 @@
+// Locale types
+export type Locale = 'tr' | 'en' | 'tr-TR' | 'en-US';
+
 // Navigation types
 export interface NavigationItem {
   label: string;
