@@ -5,28 +5,32 @@ import { Card } from "@/components/ui/card";
 import { Globe, Star } from "lucide-react";
 import type { Language } from "@/lib/types";
 
-export function LanguagesSection() {
+interface LanguagesSectionProps {
+  dictionary: any;
+}
+
+export function LanguagesSection({ dictionary }: LanguagesSectionProps) {
   const LANGUAGES_DATA: Language[] = [
     {
-      name: "Turkish",
-      level: "Native",
+      name: dictionary.languages.languageNames.turkish,
+      level: dictionary.languages.proficiency.native,
       proficiency: 5
     },
     {
-      name: "English",
-      level: "Fluent",
+      name: dictionary.languages.languageNames.english,
+      level: dictionary.languages.proficiency.fluent,
       proficiency: 4
     }
   ];
 
   const getProficiencyText = (proficiency: number) => {
     switch (proficiency) {
-      case 5: return "Native";
-      case 4: return "Fluent";
-      case 3: return "Advanced";
-      case 2: return "Intermediate";
-      case 1: return "Basic";
-      default: return "Beginner";
+      case 5: return dictionary.languages.proficiency.native;
+      case 4: return dictionary.languages.proficiency.fluent;
+      case 3: return dictionary.languages.proficiency.advanced;
+      case 2: return dictionary.languages.proficiency.intermediate;
+      case 1: return dictionary.languages.proficiency.basic;
+      default: return dictionary.languages.proficiency.beginner;
     }
   };
 
@@ -58,14 +62,14 @@ export function LanguagesSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-4">
             <Globe className="h-5 w-5 text-accent" />
             <span className="text-sm font-medium text-accent">
-              Communication
+              {dictionary.languages.badge}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground via-accent to-foreground bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-            Languages
+            {dictionary.languages.title}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
-            Effective communication is key in software development. Here are the languages I'm proficient in.
+            {dictionary.languages.description}
           </p>
         </div>
 
@@ -97,7 +101,7 @@ export function LanguagesSection() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-center gap-2 mb-4">
                     <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                      Proficiency Level
+                      {dictionary.languages.proficiencyLevel}
                     </span>
                     <span className={`text-sm font-semibold ${getProficiencyColor(language.proficiency)}`}>
                       {getProficiencyText(language.proficiency)}
@@ -122,7 +126,7 @@ export function LanguagesSection() {
                   {/* Proficiency Percentage */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
-                      <span>Proficiency</span>
+                      <span>{dictionary.languages.proficiencyLabel}</span>
                       <span className="font-semibold">{language.proficiency * 20}%</span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2 overflow-hidden">

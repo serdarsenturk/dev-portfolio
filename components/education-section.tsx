@@ -5,13 +5,17 @@ import { Card } from "@/components/ui/card";
 import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 import type { Education } from "@/lib/types";
 
-export function EducationSection() {
+interface EducationSectionProps {
+  dictionary: any;
+}
+
+export function EducationSection({ dictionary }: EducationSectionProps) {
   const EDUCATION_DATA: Education[] = [
     {
-      degree: "BSc in Computer Engineering",
-      institution: "Trakya University",
-      period: "2018 - 2022",
-      description: "Graduated with focus on software engineering, algorithms, and distributed systems."
+      degree: dictionary.education.degree,
+      institution: dictionary.education.institution,
+      period: dictionary.education.period,
+      description: dictionary.education.graduationDescription
     }
   ];
 
@@ -36,14 +40,14 @@ export function EducationSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <GraduationCap className="h-5 w-5 text-primary" />
             <span className="text-sm font-medium text-primary">
-              Academic Journey
+              {dictionary.education.badge}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-            Education
+            {dictionary.education.title}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
-            My academic background in Computer Engineering has provided me with a strong foundation in software development, algorithms, and system design.
+            {dictionary.education.description}
           </p>
         </div>
 
@@ -75,7 +79,7 @@ export function EducationSection() {
                     </Badge>
                     <Badge variant="outline" className="border-accent/30 text-accent hover:bg-accent/10">
                       <Award className="h-4 w-4 mr-2" />
-                      Bachelor's Degree
+                      {dictionary.education.degreeType}
                     </Badge>
                   </div>
                 </div>
@@ -84,7 +88,7 @@ export function EducationSection() {
                 {education.description && (
                   <div className="space-y-3">
                     <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-500">
-                      Focus Areas
+                      {dictionary.education.focusAreas}
                     </h4>
                     <p className="text-muted-foreground group-hover:text-foreground leading-relaxed transition-colors duration-500">
                       {education.description}
@@ -95,16 +99,16 @@ export function EducationSection() {
                 {/* Key Achievements */}
                 <div className="mt-6 pt-6 border-t border-border/50">
                   <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-500 mb-4">
-                    Key Learning Areas
+                    {dictionary.education.keyAreas}
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {[
-                      "Software Engineering",
-                      "Algorithm Design",
-                      "Distributed Systems",
-                      "Database Management",
-                      "Object-Oriented Programming",
-                      "System Architecture"
+                      dictionary.education.areas.softwareEngineering,
+                      dictionary.education.areas.algorithmDesign,
+                      dictionary.education.areas.distributedSystems,
+                      dictionary.education.areas.databaseManagement,
+                      dictionary.education.areas.objectOrientedProgramming,
+                      dictionary.education.areas.systemArchitecture
                     ].map((area, areaIndex) => (
                       <div
                         key={area}
