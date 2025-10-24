@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "@/components/theme-provider"
-import { Button } from "@/components/ui/button"
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
+import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="relative group">
       {/* Glassmorphism background */}
       <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg border border-white/30 dark:border-white/20 group-hover:border-white/40 dark:group-hover:border-white/30 transition-all duration-300" />
-      
+
       <Button
         variant="ghost"
         size="icon"
@@ -26,9 +26,9 @@ export function ThemeToggle() {
 
         <span className="sr-only">Toggle theme</span>
       </Button>
-      
+
       {/* Subtle glow effect */}
       <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/10 via-primary/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
-  )
+  );
 }

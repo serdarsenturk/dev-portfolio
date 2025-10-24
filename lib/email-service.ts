@@ -1,12 +1,15 @@
 import emailjs from "@emailjs/browser";
 import { DEVELOPER_INFO } from "./constants";
-import { 
-  EmailServiceConfig, 
-  EmailData, 
-  EmailServiceResult, 
-  IEmailService 
+import {
+  EmailServiceConfig,
+  EmailData,
+  EmailServiceResult,
+  IEmailService,
 } from "./interfaces/email.interface";
-import { EmailDataValidator, EmailServiceConfigValidator } from "./utils/email-validation";
+import {
+  EmailDataValidator,
+  EmailServiceConfigValidator,
+} from "./utils/email-validation";
 import { EmailLogger } from "./utils/email-logger";
 
 // EmailJS implementation
@@ -22,24 +25,26 @@ export class EmailJSService implements IEmailService {
   private validateConfig(): void {
     const validation = EmailServiceConfigValidator.validate(this.config);
     if (!validation.isValid) {
-      EmailLogger.error('Invalid EmailJS configuration', validation.errors);
-      throw new Error(`EmailJS configuration error: ${validation.errors.join(', ')}`);
+      EmailLogger.error("Invalid EmailJS configuration", validation.errors);
+      throw new Error(
+        `EmailJS configuration error: ${validation.errors.join(", ")}`
+      );
     }
   }
 
   initialize(): void {
     if (this.isInitialized) {
-      EmailLogger.warn('EmailJS service already initialized');
+      EmailLogger.warn("EmailJS service already initialized");
       return;
     }
 
     if (this.config.publicKey) {
       emailjs.init(this.config.publicKey);
       this.isInitialized = true;
-      EmailLogger.success('EmailJS service initialized successfully');
+      EmailLogger.success("EmailJS service initialized successfully");
     } else {
-      EmailLogger.error('Cannot initialize EmailJS: Public key is missing');
-      throw new Error('EmailJS public key is required for initialization');
+      EmailLogger.error("Cannot initialize EmailJS: Public key is missing");
+      throw new Error("EmailJS public key is required for initialization");
     }
   }
 
@@ -47,20 +52,22 @@ export class EmailJSService implements IEmailService {
     try {
       const dataValidation = EmailDataValidator.validate(data);
       if (!dataValidation.isValid) {
-        EmailLogger.error('Invalid email data', dataValidation.errors);
+        EmailLogger.error("Invalid email data", dataValidation.errors);
         return {
           success: false,
-          error: `Validation failed: ${dataValidation.errors.join(', ')}`
+          error: `Validation failed: ${dataValidation.errors.join(", ")}`,
         };
       }
 
       if (!this.isInitialized) {
-        EmailLogger.warn('EmailJS service not initialized, attempting to initialize...');
+        EmailLogger.warn(
+          "EmailJS service not initialized, attempting to initialize..."
+        );
         this.initialize();
       }
 
       const templateParams = this.prepareTemplateParams(data);
-      EmailLogger.debug('Sending email with template params', templateParams);
+      EmailLogger.debug("Sending email with template params", templateParams);
 
       const result = await emailjs.send(
         this.config.serviceId,
@@ -68,16 +75,17 @@ export class EmailJSService implements IEmailService {
         templateParams
       );
 
-      EmailLogger.success('Email sent successfully', { 
+      EmailLogger.success("Email sent successfully", {
         serviceId: this.config.serviceId,
-        templateId: this.config.templateId 
+        templateId: this.config.templateId,
       });
 
       return { success: true, result };
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Unknown error";
-      EmailLogger.error('Failed to send email', errorMessage);
-      
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
+      EmailLogger.error("Failed to send email", errorMessage);
+
       return {
         success: false,
         error: errorMessage,
@@ -112,18 +120,24 @@ export class EmailServiceFactory {
       publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "",
     };
 
-    EmailLogger.info('Creating EmailJS service with config', {
-      serviceId: config.serviceId ? '***' + config.serviceId.slice(-4) : 'missing',
-      templateId: config.templateId ? '***' + config.templateId.slice(-4) : 'missing',
-      publicKey: config.publicKey ? '***' + config.publicKey.slice(-4) : 'missing'
+    EmailLogger.info("Creating EmailJS service with config", {
+      serviceId: config.serviceId
+        ? "***" + config.serviceId.slice(-4)
+        : "missing",
+      templateId: config.templateId
+        ? "***" + config.templateId.slice(-4)
+        : "missing",
+      publicKey: config.publicKey
+        ? "***" + config.publicKey.slice(-4)
+        : "missing",
     });
 
     return new EmailJSService(config);
   }
 
-  static createService(provider: 'emailjs' = 'emailjs'): IEmailService {
+  static createService(provider: "emailjs" = "emailjs"): IEmailService {
     switch (provider) {
-      case 'emailjs':
+      case "emailjs":
         return this.createEmailJSService();
       default:
         EmailLogger.error(`Unsupported email service provider: ${provider}`);

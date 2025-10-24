@@ -76,12 +76,18 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
   }, []);
 
   const handleDownloadCV = () => {
-    // Get current language from URL or default to 'tr'
-    const currentLang = window.location.pathname.includes('/en') ? 'en' : 'tr';
-    const cvFileName = currentLang === 'en' ? 'cv-serdar-senturk-en.pdf' : 'cv-serdar-senturk-tr.pdf';
+    // Check if we're on client side
+    if (typeof window === "undefined") return;
     
+    // Get current language from URL or default to 'tr'
+    const currentLang = window.location.pathname.includes("/en") ? "en" : "tr";
+    const cvFileName =
+      currentLang === "en"
+        ? "cv-serdar-senturk-en.pdf"
+        : "cv-serdar-senturk-tr.pdf";
+
     // Open PDF in new tab for preview, then user can download if they want
-    window.open(`/${cvFileName}`, '_blank');
+    window.open(`/${cvFileName}`, "_blank");
   };
 
   const onMessageSubmit = async (e: React.FormEvent) => {
@@ -92,27 +98,27 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
 
     try {
       const result = await emailService.sendEmail(formData);
-      
+
       if (result.success) {
         setIsSubmitted(true);
         setFormData({ name: "", email: "", message: "" });
-        
+
         // Close success message after 5 seconds
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        throw new Error(result.error || 'Failed to send email');
+        throw new Error(result.error || "Failed to send email");
       }
     } catch (error) {
-      console.error('Email send error:', error);
+      console.error("Email send error:", error);
       setIsError(true);
       setErrorMessage(
-        error instanceof Error 
-          ? error.message 
-          : 'An error occurred. Please try again.'
+        error instanceof Error
+          ? error.message
+          : "An error occurred. Please try again."
       );
-      
+
       setTimeout(() => {
         setIsError(false);
         setErrorMessage("");
@@ -131,10 +137,13 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
         {/* Modern Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/60 dark:from-slate-900 dark:via-blue-950/30 dark:to-indigo-950/50" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-200/30 via-transparent to-transparent dark:from-blue-900/20" />
-        
+
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "2s" }} />
+        <div
+          className="absolute bottom-20 right-10 w-32 h-32 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-2xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-purple-400/10 dark:from-blue-500/5 dark:to-purple-500/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto max-w-7xl relative z-10">
@@ -150,7 +159,10 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
               {dictionary.contact.title}
             </h2>
             <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
-              {dictionary.contact.subtitle.replace('{name}', DEVELOPER_INFO.NAME)}
+              {dictionary.contact.subtitle.replace(
+                "{name}",
+                DEVELOPER_INFO.NAME
+              )}
             </p>
           </div>
 
@@ -167,7 +179,9 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       <div className="p-2 rounded-xl bg-blue-500/15 group-hover:bg-blue-500/25 dark:bg-blue-500/10 dark:group-hover:bg-blue-500/20 transition-colors duration-300">
                         <Mail className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700 dark:text-slate-400">Email</span>
+                      <span className="text-sm font-semibold text-slate-700 dark:text-slate-400">
+                        Email
+                      </span>
                     </div>
                     <a
                       href={`mailto:${DEVELOPER_INFO.EMAIL}`}
@@ -186,7 +200,9 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       <div className="p-2 rounded-xl bg-green-500/15 group-hover:bg-green-500/25 dark:bg-green-500/10 dark:group-hover:bg-green-500/20 transition-colors duration-300">
                         <Phone className="h-5 w-5 text-green-700 dark:text-green-400" />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700 dark:text-slate-400">Phone</span>
+                      <span className="text-sm font-semibold text-slate-700 dark:text-slate-400">
+                        Phone
+                      </span>
                     </div>
                     <a
                       href={`tel:${DEVELOPER_INFO.PHONE}`}
@@ -235,7 +251,9 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       className={`group/social flex-1 p-4 rounded-xl bg-slate-100/80 dark:bg-slate-800/50 ${color} transition-all duration-300 hover:scale-105 flex items-center justify-center border border-slate-300/50 dark:border-slate-700/50`}
                       aria-label={label}
                     >
-                      <Icon className={`h-6 w-6 ${iconColor} group-hover/social:scale-110 transition-transform duration-300`} />
+                      <Icon
+                        className={`h-6 w-6 ${iconColor} group-hover/social:scale-110 transition-transform duration-300`}
+                      />
                     </a>
                   ))}
                 </div>
@@ -279,113 +297,132 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
             <div className="relative p-6 rounded-2xl bg-white/90 dark:bg-white/5 backdrop-blur-2xl border border-slate-200/60 dark:border-white/10 shadow-2xl shadow-slate-200/50 dark:shadow-blue-500/10">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/8 via-purple-500/8 to-blue-500/8 dark:from-blue-500/5 dark:via-purple-500/5 dark:to-blue-500/5 rounded-2xl" />
               <div className="relative z-10">
-              {isSubmitted && (
-                <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
-                  <div className="text-center space-y-3">
-                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 animate-scale-in">
-                      <CheckCircle2 className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-semibold mb-1">
-                        {dictionary.contact.messageSent}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
-                        {dictionary.contact.messageSentSubtitle}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {isError && (
-                <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
-                  <div className="text-center space-y-3">
-                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-500/10 animate-scale-in">
-                      <AlertCircle className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-semibold mb-1 text-red-600">
-                        {dictionary.contact.error}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
-                        {errorMessage}
-                      </p>
+                {isSubmitted && (
+                  <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
+                    <div className="text-center space-y-3">
+                      <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 animate-scale-in">
+                        <CheckCircle2 className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-base sm:text-lg font-semibold mb-1">
+                          {dictionary.contact.messageSent}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground">
+                          {dictionary.contact.messageSentSubtitle}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              <form onSubmit={onMessageSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {isError && (
+                  <div className="absolute inset-0 bg-background/95 backdrop-blur-sm z-10 flex items-center justify-center animate-fade-in">
+                    <div className="text-center space-y-3">
+                      <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-500/10 animate-scale-in">
+                        <AlertCircle className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                      </div>
+                      <div>
+                        <h3 className="text-base sm:text-lg font-semibold mb-1 text-red-600">
+                          {dictionary.contact.error}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground">
+                          {errorMessage}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <form onSubmit={onMessageSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label
+                        htmlFor="name"
+                        className="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >
+                        {dictionary.contact.form.nameLabel}{" "}
+                        <span className="text-red-500">*</span>
+                      </Label>
+                      <Input
+                        id="name"
+                        placeholder={dictionary.contact.form.placeholder}
+                        value={formData.name}
+                        onChange={(event: any) =>
+                          setFormData({ ...formData, name: event.target.value })
+                        }
+                        className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
+                        required
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label
+                        htmlFor="email"
+                        className="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                      >
+                        {dictionary.contact.form.emailLabel}{" "}
+                        <span className="text-red-500">*</span>
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder={dictionary.contact.emailPlaceholder}
+                        value={formData.email}
+                        onChange={(event: any) =>
+                          setFormData({
+                            ...formData,
+                            email: event.target.value,
+                          })
+                        }
+                        className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
+                        required
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="name" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      {dictionary.contact.form.nameLabel} <span className="text-red-500">*</span>
+                    <Label
+                      htmlFor="message"
+                      className="text-sm font-semibold text-slate-700 dark:text-slate-300"
+                    >
+                      {dictionary.contact.form.messageLabel}{" "}
+                      <span className="text-red-500">*</span>
                     </Label>
-                    <Input
-                      id="name"
-                      placeholder={dictionary.contact.form.placeholder}
-                      value={formData.name}
+                    <Textarea
+                      id="message"
+                      placeholder={dictionary.contact.messagePlaceholder}
+                      rows={3}
+                      value={formData.message}
                       onChange={(event: any) =>
-                        setFormData({ ...formData, name: event.target.value })
+                        setFormData({
+                          ...formData,
+                          message: event.target.value,
+                        })
                       }
-                      className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
+                      className="px-4 py-3 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none transition-all duration-300 shadow-sm"
                       required
                       disabled={isSubmitting}
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <Label htmlFor="email" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      {dictionary.contact.form.emailLabel} <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder={dictionary.contact.emailPlaceholder}
-                      value={formData.email}
-                      onChange={(event: any) =>
-                        setFormData({ ...formData, email: event.target.value })
-                      }
-                      className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="message" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                    {dictionary.contact.form.messageLabel} <span className="text-red-500">*</span>
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder={dictionary.contact.messagePlaceholder}
-                    rows={3}
-                    value={formData.message}
-                    onChange={(event: any) =>
-                      setFormData({ ...formData, message: event.target.value })
-                    }
-                    className="px-4 py-3 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 resize-none transition-all duration-300 shadow-sm"
-                    required
-                    disabled={isSubmitting}
-                  />
-                </div>
                 <Button
                   type="submit"
                   className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
+                  aria-label="Send contact message"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="h-4 w-4 mr-2 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      {dictionary.contact.sending}
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
-                      {dictionary.contact.sendMessage}
-                    </>
-                  )}
-                </Button>
-              </form>
+                    {isSubmitting ? (
+                      <>
+                        <div className="h-4 w-4 mr-2 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                        {dictionary.contact.sending}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
+                        {dictionary.contact.sendMessage}
+                      </>
+                    )}
+                  </Button>
+                </form>
               </div>
             </div>
           </div>
@@ -396,7 +433,8 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p className="animate-fade-in">
-              © {new Date().getFullYear()} {DEVELOPER_INFO.NAME}. All rights reserved.
+              © {new Date().getFullYear()} {DEVELOPER_INFO.NAME}. All rights
+              reserved.
             </p>
             <div
               className="flex items-center gap-4 animate-fade-in"

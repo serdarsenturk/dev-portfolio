@@ -14,23 +14,29 @@ export function LanguagesSection({ dictionary }: LanguagesSectionProps) {
     {
       name: dictionary.languages.languageNames.turkish,
       level: dictionary.languages.proficiency.native,
-      proficiency: 5
+      proficiency: 5,
     },
     {
       name: dictionary.languages.languageNames.english,
       level: dictionary.languages.proficiency.fluent,
-      proficiency: 4
-    }
+      proficiency: 4,
+    },
   ];
 
   const getProficiencyText = (proficiency: number) => {
     switch (proficiency) {
-      case 5: return dictionary.languages.proficiency.native;
-      case 4: return dictionary.languages.proficiency.fluent;
-      case 3: return dictionary.languages.proficiency.advanced;
-      case 2: return dictionary.languages.proficiency.intermediate;
-      case 1: return dictionary.languages.proficiency.basic;
-      default: return dictionary.languages.proficiency.beginner;
+      case 5:
+        return dictionary.languages.proficiency.native;
+      case 4:
+        return dictionary.languages.proficiency.fluent;
+      case 3:
+        return dictionary.languages.proficiency.advanced;
+      case 2:
+        return dictionary.languages.proficiency.intermediate;
+      case 1:
+        return dictionary.languages.proficiency.basic;
+      default:
+        return dictionary.languages.proficiency.beginner;
     }
   };
 
@@ -81,15 +87,15 @@ export function LanguagesSection({ dictionary }: LanguagesSectionProps) {
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="absolute -inset-[2px] bg-gradient-to-br from-accent/50 to-primary/50 rounded-xl opacity-0 group-hover:opacity-30 blur transition-all duration-700 -z-10" />
-              
+
               <div className="relative z-10 text-center">
                 {/* Language Name */}
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-foreground group-hover:text-accent transition-colors duration-500 mb-2">
                     {language.name}
                   </h3>
-                  <Badge 
-                    variant="secondary" 
+                  <Badge
+                    variant="secondary"
                     className={`bg-accent/10 text-accent border-accent/30 px-4 py-2 ${getProficiencyColor(language.proficiency)}`}
                   >
                     <Star className="h-4 w-4 mr-2" />
@@ -103,7 +109,9 @@ export function LanguagesSection({ dictionary }: LanguagesSectionProps) {
                     <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-500">
                       {dictionary.languages.proficiencyLevel}
                     </span>
-                    <span className={`text-sm font-semibold ${getProficiencyColor(language.proficiency)}`}>
+                    <span
+                      className={`text-sm font-semibold ${getProficiencyColor(language.proficiency)}`}
+                    >
                       {getProficiencyText(language.proficiency)}
                     </span>
                   </div>
@@ -127,25 +135,25 @@ export function LanguagesSection({ dictionary }: LanguagesSectionProps) {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-500">
                       <span>{dictionary.languages.proficiencyLabel}</span>
-                      <span className="font-semibold">{language.proficiency * 20}%</span>
+                      <span className="font-semibold">
+                        {language.proficiency * 20}%
+                      </span>
                     </div>
                     <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
-                      <div 
+                      <div
                         className="h-full bg-gradient-to-r from-accent to-primary rounded-full transition-all duration-1000 ease-out"
-                        style={{ 
+                        style={{
                           width: `${language.proficiency * 20}%`,
-                          animationDelay: `${index * 0.2 + 0.5}s`
+                          animationDelay: `${index * 0.2 + 0.5}s`,
                         }}
                       />
                     </div>
                   </div>
-
                 </div>
               </div>
             </Card>
           ))}
         </div>
-
       </div>
     </section>
   );

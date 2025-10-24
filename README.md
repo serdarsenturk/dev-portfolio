@@ -26,12 +26,13 @@ A modern, responsive personal portfolio website built with Next.js 16, TypeScrip
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -39,11 +40,13 @@ A modern, responsive personal portfolio website built with Next.js 16, TypeScrip
    ```
 
 2. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    ```
-   
+
    Add your EmailJS credentials:
+
    ```env
    NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
@@ -51,6 +54,7 @@ A modern, responsive personal portfolio website built with Next.js 16, TypeScrip
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    # or
@@ -63,6 +67,7 @@ A modern, responsive personal portfolio website built with Next.js 16, TypeScrip
 ## 🌍 Internationalization
 
 The portfolio supports two languages:
+
 - **Turkish** (`/tr`) - Default language
 - **English** (`/en`)
 
@@ -99,6 +104,7 @@ Modify the data in `lib/constants.ts` to reflect your skills and experience.
 ### Styling
 
 The portfolio uses Tailwind CSS with custom configurations. Main styling files:
+
 - `app/[lang]/globals.css` - Global styles
 - Component-specific styles are inline with Tailwind classes
 

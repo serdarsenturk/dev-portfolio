@@ -47,7 +47,7 @@ export function Navigation({ dictionary }: NavigationProps) {
         SECTION_IDS.CONTACT,
       ];
 
-      const current = sections.find((section) => {
+      const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -64,12 +64,18 @@ export function Navigation({ dictionary }: NavigationProps) {
   }, []);
 
   const handleDownloadCV = () => {
-    // Get current language from URL or default to 'tr'
-    const currentLang = window.location.pathname.includes('/en') ? 'en' : 'tr';
-    const cvFileName = currentLang === 'en' ? 'cv-serdar-senturk-en.pdf' : 'cv-serdar-senturk-tr.pdf';
+    // Check if we're on client side
+    if (typeof window === "undefined") return;
     
+    // Get current language from URL or default to 'tr'
+    const currentLang = window.location.pathname.includes("/en") ? "en" : "tr";
+    const cvFileName =
+      currentLang === "en"
+        ? "cv-serdar-senturk-en.pdf"
+        : "cv-serdar-senturk-tr.pdf";
+
     // Open PDF in new tab for preview, then user can download if they want
-    window.open(`/${cvFileName}`, '_blank');
+    window.open(`/${cvFileName}`, "_blank");
   };
 
   return (
@@ -86,7 +92,9 @@ export function Navigation({ dictionary }: NavigationProps) {
           <a
             href="#"
             className="group flex-shrink-0"
-            aria-label="Serdar Senturk"
+            aria-label="Serdar Senturk - Go to top"
+            role="button"
+            tabIndex={0}
           >
             <span className="text-base sm:text-lg lg:text-xl font-bold text-foreground group-hover:text-primary transition-colors whitespace-nowrap">
               <span className="hidden md:inline">Serdar Senturk</span>
@@ -97,7 +105,7 @@ export function Navigation({ dictionary }: NavigationProps) {
           {/* Desktop Navigation - Large screens (1024px+) */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             <div className="flex items-center gap-1">
-              {NAVIGATION_ITEMS.map((item) => {
+              {NAVIGATION_ITEMS.map(item => {
                 const isActive = activeSection === item.href.slice(1);
                 return (
                   <a
@@ -108,8 +116,18 @@ export function Navigation({ dictionary }: NavigationProps) {
                         ? "text-primary bg-primary/10 dark:bg-white/10 backdrop-blur-sm"
                         : "text-muted-foreground hover:text-foreground hover:bg-gray-100/50 dark:hover:bg-white/5 backdrop-blur-sm"
                     }`}
+                    aria-label={`Navigate to ${item.label} section`}
+                    role="button"
+                    tabIndex={0}
                   >
-                    {dictionary.navigation[item.label.replace('navigation.', '') as keyof typeof dictionary.navigation]}
+                    {
+                      dictionary.navigation[
+                        item.label.replace(
+                          "navigation.",
+                          ""
+                        ) as keyof typeof dictionary.navigation
+                      ]
+                    }
                   </a>
                 );
               })}
@@ -120,11 +138,12 @@ export function Navigation({ dictionary }: NavigationProps) {
                 onClick={handleDownloadCV}
                 size="sm"
                 className="gap-1.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 rounded-full px-3 py-1.5 text-xs whitespace-nowrap shadow-md hover:shadow-lg hover:scale-105"
+                aria-label="Download CV in PDF format"
               >
                 <Download className="h-3.5 w-3.5" />
                 {dictionary.navigation.download}
               </Button>
-              
+
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
@@ -134,7 +153,7 @@ export function Navigation({ dictionary }: NavigationProps) {
           <div className="hidden md:flex lg:hidden items-center gap-2 w-full min-w-0">
             {/* Navigation Items - All items with ultra compact spacing */}
             <div className="flex items-center gap-0.5 flex-1 justify-center min-w-0 overflow-hidden">
-              {NAVIGATION_ITEMS.map((item) => {
+              {NAVIGATION_ITEMS.map(item => {
                 const isActive = activeSection === item.href.slice(1);
                 return (
                   <a
@@ -146,7 +165,14 @@ export function Navigation({ dictionary }: NavigationProps) {
                         : "text-muted-foreground hover:text-foreground hover:bg-gray-100/50 dark:hover:bg-white/5 backdrop-blur-sm"
                     }`}
                   >
-                    {dictionary.navigation[item.label.replace('navigation.', '') as keyof typeof dictionary.navigation]}
+                    {
+                      dictionary.navigation[
+                        item.label.replace(
+                          "navigation.",
+                          ""
+                        ) as keyof typeof dictionary.navigation
+                      ]
+                    }
                   </a>
                 );
               })}
@@ -162,7 +188,7 @@ export function Navigation({ dictionary }: NavigationProps) {
                 <Download className="h-3 w-3" />
                 {dictionary.navigation.download}
               </Button>
-              
+
               <ThemeToggle />
             </div>
           </div>
@@ -180,18 +206,25 @@ export function Navigation({ dictionary }: NavigationProps) {
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col gap-6 mt-8">
                   <div className="space-y-2">
-                    {NAVIGATION_ITEMS.map((item) => (
+                    {NAVIGATION_ITEMS.map(item => (
                       <a
                         key={item.label}
                         href={item.href}
                         className="block px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-gray-100/50 dark:hover:bg-white/5 rounded-lg transition-all duration-300"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {dictionary.navigation[item.label.replace('navigation.', '') as keyof typeof dictionary.navigation]}
+                        {
+                          dictionary.navigation[
+                            item.label.replace(
+                              "navigation.",
+                              ""
+                            ) as keyof typeof dictionary.navigation
+                          ]
+                        }
                       </a>
                     ))}
                   </div>
-                  
+
                   <div className="pt-4 border-t">
                     <Button
                       onClick={handleDownloadCV}

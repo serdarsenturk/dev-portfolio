@@ -1,5 +1,5 @@
 // Locale types
-export type Locale = 'tr' | 'en' | 'tr-TR' | 'en-US';
+export type Locale = "tr" | "en" | "tr-TR" | "en-US";
 
 // Navigation types
 export interface NavigationItem {

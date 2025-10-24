@@ -52,7 +52,7 @@ export function RaceCard({ race }: CharacterRaceCardProps) {
           </h4>
           <div className="space-y-2">
             {bonuses.map((bonus, index) => (
-              <div 
+              <div
                 key={index}
                 className="flex items-center gap-3 p-2 rounded-lg bg-slate-100 dark:bg-slate-700/30 group-hover:bg-slate-200 dark:group-hover:bg-slate-600/30 transition-colors duration-300"
               >

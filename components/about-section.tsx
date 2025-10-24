@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Code2, Palette, Users, Zap } from "lucide-react";
 import type { SkillCategory, HighlightItem } from "@/lib/types";
+import Image from "next/image";
 
 interface AboutSectionProps {
   dictionary: {
@@ -35,15 +36,7 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
   const SKILL_CATEGORIES: SkillCategory[] = [
     {
       category: dictionary.about.skillCategories.programmingLanguages,
-      skills: [
-        "Python",
-        "Java",
-        "C#",
-        "JavaScript",
-        "TypeScript",
-        "SQL",
-        "C",
-      ],
+      skills: ["Python", "Java", "C#", "JavaScript", "TypeScript", "SQL", "C"],
       featured: true,
     },
     {
@@ -146,8 +139,6 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
     },
   ];
 
-
-
   return (
     <section
       id="about"
@@ -162,35 +153,38 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
 
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-4 mb-8 sm:mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-primary dark:from-foreground dark:to-accent bg-clip-text text-transparent">
-                  {dictionary.about?.title || 'About Me'}
-                </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-primary dark:from-foreground dark:to-accent bg-clip-text text-transparent">
+            {dictionary.about?.title || "About Me"}
+          </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-8 sm:mb-12">
           <div className="order-1 lg:order-1">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 rounded-3xl blur-2xl" />
-              
+
               <div className="relative bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/30 dark:border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/5 dark:shadow-black/20 hover:shadow-primary/30 transition-all duration-500 group/photo">
                 <div className="absolute -inset-[2px] bg-gradient-to-br from-primary/20 to-accent/20 dark:from-primary/30 dark:to-accent/30 rounded-3xl opacity-0 group-hover/photo:opacity-40 dark:group-hover/photo:opacity-20 blur-sm transition-all duration-500 -z-10" />
-                
+
                 <div className="relative z-10 text-center">
                   <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 border-4 border-primary/20 dark:border-primary/30 overflow-hidden shadow-2xl group-hover/photo:scale-105 transition-all duration-500">
-                    <img 
-                      src="/profile-photo.jpg" 
-                      alt="Serdar Senturk" 
+                    <Image
+                      src="/profile-photo.jpg"
+                      alt="Serdar Senturk"
+                      width={192}
+                      height={192}
                       className="w-full h-full object-cover group-hover/photo:scale-110 transition-transform duration-500"
+                      priority
                     />
                   </div>
-                  
+
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover/photo:text-primary transition-colors duration-500 mb-2">
                     Serdar Senturk
                   </h3>
                   <p className="text-primary font-semibold mb-4 text-sm sm:text-base">
                     Software Developer
                   </p>
-                  
+
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
                     <div className="bg-primary/10 rounded-lg p-2 sm:p-3 group-hover/photo:bg-primary/20 transition-colors duration-300">
                       <div className="font-semibold text-primary">3+ Years</div>
@@ -235,8 +229,6 @@ export function AboutSection({ dictionary }: AboutSectionProps) {
             </Card>
           ))}
         </div>
-
-
 
         <div>
           <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-primary dark:from-foreground dark:to-accent bg-clip-text text-transparent">

@@ -9,9 +9,12 @@ interface CharacterAttributeCardProps {
   delay?: number;
 }
 
-export function AttributeCard({ attribute, delay = 0 }: CharacterAttributeCardProps) {
+export function AttributeCard({
+  attribute,
+  delay = 0,
+}: CharacterAttributeCardProps) {
   const { name, value, modifier, description, icon: Icon } = attribute;
-  
+
   const getModifierColor = (modifier: number) => {
     if (modifier >= 4) return "text-green-400";
     if (modifier >= 2) return "text-blue-400";
@@ -27,7 +30,7 @@ export function AttributeCard({ attribute, delay = 0 }: CharacterAttributeCardPr
   };
 
   return (
-    <Card 
+    <Card
       className={`p-4 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-white/60 dark:hover:border-white/30 transition-all duration-500 hover:shadow-lg shadow-black/5 dark:shadow-black/20 group animate-fade-in-up`}
       style={{ animationDelay: `${delay}s` }}
     >
@@ -48,10 +51,11 @@ export function AttributeCard({ attribute, delay = 0 }: CharacterAttributeCardPr
             <span className="text-2xl font-bold text-slate-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300">
               {value}
             </span>
-            <Badge 
+            <Badge
               className={`${getModifierBg(modifier)} ${getModifierColor(modifier)} text-xs font-bold px-2 py-1`}
             >
-              {modifier >= 0 ? '+' : ''}{modifier}
+              {modifier >= 0 ? "+" : ""}
+              {modifier}
             </Badge>
           </div>
         </div>

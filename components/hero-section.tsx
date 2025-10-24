@@ -10,13 +10,7 @@ import {
   SCROLL_BEHAVIOR,
   SECTION_IDS,
 } from "@/lib/constants";
-import {
-  ArrowDown,
-  Github,
-  Linkedin,
-  Mail,
-  Sparkles
-} from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface HeroSectionProps {
@@ -152,7 +146,9 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
                   onClick={handleScrollToContact}
                   className="relative group/btn overflow-hidden bg-transparent border-2 border-primary/50 hover:bg-primary/10 hover:border-primary hover:text-primary transition-all duration-500 shadow-xl hover:shadow-primary/20 px-8 py-4 text-lg font-semibold"
                 >
-                  <span className="relative z-10">{dictionary.hero.getInTouch}</span>
+                  <span className="relative z-10">
+                    {dictionary.hero.getInTouch}
+                  </span>
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 dark:from-primary/10 dark:to-accent/10 translate-x-full group-hover/btn:translate-x-0 transition-all duration-500" />
                 </Button>
               </div>
@@ -167,8 +163,8 @@ export function HeroSection({ dictionary }: HeroSectionProps) {
                   label === "GitHub"
                     ? Github
                     : label === "LinkedIn"
-                    ? Linkedin
-                    : Mail;
+                      ? Linkedin
+                      : Mail;
                 return (
                   <div
                     key={label}

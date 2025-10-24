@@ -18,7 +18,9 @@ export function ClassCard({ characterClass }: CharacterClassCardProps) {
         {/* Header */}
         <div className="flex items-center gap-4">
           <div className="p-3 rounded-xl bg-slate-200 dark:bg-slate-700/50 group-hover:bg-slate-300 dark:group-hover:bg-slate-600/50 transition-colors duration-300">
-            <Icon className={`h-8 w-8 ${color} group-hover:scale-110 transition-transform duration-300`} />
+            <Icon
+              className={`h-8 w-8 ${color} group-hover:scale-110 transition-transform duration-300`}
+            />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">

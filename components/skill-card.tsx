@@ -25,9 +25,20 @@ interface CharacterSkillCardProps {
   };
 }
 
-export function SkillCard({ skill, delay = 0, dictionary }: CharacterSkillCardProps) {
-  const { name, level, description, icon: Icon, isProficient, bonus = 0 } = skill;
-  
+export function SkillCard({
+  skill,
+  delay = 0,
+  dictionary,
+}: CharacterSkillCardProps) {
+  const {
+    name,
+    level,
+    description,
+    icon: Icon,
+    isProficient,
+    bonus = 0,
+  } = skill;
+
   const getLevelColor = (level: number) => {
     if (level >= 18) return "text-green-400";
     if (level >= 15) return "text-blue-400";
@@ -43,15 +54,15 @@ export function SkillCard({ skill, delay = 0, dictionary }: CharacterSkillCardPr
   };
 
   const getProficiencyLevel = (level: number) => {
-    if (level >= 18) return dictionary.skills.proficiency.master;
-    if (level >= 15) return dictionary.skills.proficiency.expert;
-    if (level >= 12) return dictionary.skills.proficiency.advanced;
-    if (level >= 8) return dictionary.skills.proficiency.intermediate;
-    return dictionary.skills.proficiency.beginner;
+    if (level >= 18) return dictionary?.skills?.proficiency?.master || "Master";
+    if (level >= 15) return dictionary?.skills?.proficiency?.expert || "Expert";
+    if (level >= 12) return dictionary?.skills?.proficiency?.advanced || "Advanced";
+    if (level >= 8) return dictionary?.skills?.proficiency?.intermediate || "Intermediate";
+    return dictionary?.skills?.proficiency?.beginner || "Beginner";
   };
 
   return (
-    <Card 
+    <Card
       className={`p-4 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-white/60 dark:hover:border-white/30 transition-all duration-500 hover:shadow-lg shadow-black/5 dark:shadow-black/20 group animate-fade-in-up`}
       style={{ animationDelay: `${delay}s` }}
     >
@@ -66,15 +77,15 @@ export function SkillCard({ skill, delay = 0, dictionary }: CharacterSkillCardPr
               {name}
             </h4>
             <div className="flex items-center gap-2 mt-1">
-              <Badge 
+              <Badge
                 className={`${getLevelBg(level)} ${getLevelColor(level)} text-xs font-bold px-2 py-0.5`}
               >
-{dictionary.skills.level} {level}
+                {dictionary?.skills.level} {level}
               </Badge>
               {isProficient && (
                 <Badge className="bg-purple-500/20 border-purple-500/30 text-purple-600 dark:text-purple-300 text-xs px-2 py-0.5">
                   <Star className="h-3 w-3 mr-1" />
-                  {dictionary.skills.proficient}
+                  {dictionary?.skills.proficient}
                 </Badge>
               )}
             </div>
@@ -91,10 +102,7 @@ export function SkillCard({ skill, delay = 0, dictionary }: CharacterSkillCardPr
               {level}/20
             </span>
           </div>
-          <Progress 
-            value={(level / 20) * 100} 
-            className="h-2"
-          />
+          <Progress value={(level / 20) * 100} className="h-2" />
         </div>
 
         {/* Bonus and Proficiency */}
@@ -102,8 +110,8 @@ export function SkillCard({ skill, delay = 0, dictionary }: CharacterSkillCardPr
           <div className="flex items-center gap-2 text-xs">
             {bonus > 0 && (
               <Badge className="bg-cyan-500/20 border-cyan-500/30 text-cyan-600 dark:text-cyan-300 px-2 py-0.5">
-                <Zap className="h-3 w-3 mr-1" />
-+{bonus} {dictionary.skills.bonus}
+                <Zap className="h-3 w-3 mr-1" />+{bonus}{" "}
+                {dictionary?.skills?.bonus || "Bonus"}
               </Badge>
             )}
           </div>

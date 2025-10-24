@@ -556,11 +556,13 @@ html {
 @keyframes glow-pulse {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3),
+    box-shadow:
+      0 0 20px rgba(99, 102, 241, 0.3),
       0 0 40px rgba(99, 102, 241, 0.1);
   }
   50% {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5),
+    box-shadow:
+      0 0 40px rgba(99, 102, 241, 0.5),
       0 0 80px rgba(99, 102, 241, 0.2);
   }
 }
@@ -910,7 +912,8 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 80%,
       rgba(59, 130, 246, 0.1) 0%,
       transparent 50%

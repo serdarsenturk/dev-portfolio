@@ -66,13 +66,16 @@ export function SkillsShowcase({ dictionary }: SkillsShowcaseProps) {
   } = CHARACTER_DATA;
 
   // Group skills by category
-  const skillsByCategory = skills.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = [];
-    }
-    acc[skill.category].push(skill);
-    return acc;
-  }, {} as Record<string, typeof skills>);
+  const skillsByCategory = skills.reduce(
+    (acc, skill) => {
+      if (!acc[skill.category]) {
+        acc[skill.category] = [];
+      }
+      acc[skill.category].push(skill);
+      return acc;
+    },
+    {} as Record<string, typeof skills>
+  );
 
   return (
     <section
@@ -158,7 +161,9 @@ export function SkillsShowcase({ dictionary }: SkillsShowcaseProps) {
                           variant="outline"
                           className="bg-slate-100 dark:bg-slate-700/50 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold"
                         >
-                          {dictionary.about.skillCategories[category as keyof typeof dictionary.about.skillCategories] || category}
+                          {dictionary.about.skillCategories[
+                            category as keyof typeof dictionary.about.skillCategories
+                          ] || category}
                         </Badge>
                         <Separator className="flex-1 bg-slate-300 dark:bg-slate-600" />
                       </div>

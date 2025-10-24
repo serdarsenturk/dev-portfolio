@@ -15,8 +15,8 @@ export function EducationSection({ dictionary }: EducationSectionProps) {
       degree: dictionary.education.degree,
       institution: dictionary.education.institution,
       period: dictionary.education.period,
-      description: dictionary.education.graduationDescription
-    }
+      description: dictionary.education.graduationDescription,
+    },
   ];
 
   return (
@@ -59,7 +59,7 @@ export function EducationSection({ dictionary }: EducationSectionProps) {
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="absolute -inset-[2px] bg-gradient-to-br from-primary/50 to-accent/50 rounded-xl opacity-0 group-hover:opacity-30 blur transition-all duration-700 -z-10" />
-              
+
               <div className="relative z-10">
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
@@ -73,11 +73,17 @@ export function EducationSection({ dictionary }: EducationSectionProps) {
                     </div>
                   </div>
                   <div className="flex flex-col sm:items-end gap-2">
-                    <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/30 px-4 py-2">
+                    <Badge
+                      variant="secondary"
+                      className="bg-primary/10 text-primary border-primary/30 px-4 py-2"
+                    >
                       <Calendar className="h-4 w-4 mr-2" />
                       {education.period}
                     </Badge>
-                    <Badge variant="outline" className="border-accent/30 text-accent hover:bg-accent/10">
+                    <Badge
+                      variant="outline"
+                      className="border-accent/30 text-accent hover:bg-accent/10"
+                    >
                       <Award className="h-4 w-4 mr-2" />
                       {dictionary.education.degreeType}
                     </Badge>
@@ -108,12 +114,14 @@ export function EducationSection({ dictionary }: EducationSectionProps) {
                       dictionary.education.areas.distributedSystems,
                       dictionary.education.areas.databaseManagement,
                       dictionary.education.areas.objectOrientedProgramming,
-                      dictionary.education.areas.systemArchitecture
+                      dictionary.education.areas.systemArchitecture,
                     ].map((area, areaIndex) => (
                       <div
                         key={area}
                         className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300"
-                        style={{ animationDelay: `${index * 0.2 + areaIndex * 0.05}s` }}
+                        style={{
+                          animationDelay: `${index * 0.2 + areaIndex * 0.05}s`,
+                        }}
                       >
                         <div className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors duration-300" />
                         <span>{area}</span>

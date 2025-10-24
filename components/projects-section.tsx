@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { ExternalLink, Github } from "lucide-react";
 import type { Project } from "@/lib/types";
+import Image from "next/image";
 
 interface ProjectsSectionProps {
   dictionary: any;
@@ -22,7 +23,16 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
       title: dictionary.projects.items.springDistributed.title,
       description: dictionary.projects.items.springDistributed.description,
       image: "/project-spring-boot.jpg",
-      technologies: ["Java", "Spring", "RabbitMQ", "Redis", "Docker", "MySQL", "Log4j", "Slf4j"],
+      technologies: [
+        "Java",
+        "Spring",
+        "RabbitMQ",
+        "Redis",
+        "Docker",
+        "MySQL",
+        "Log4j",
+        "Slf4j",
+      ],
       github: "https://github.com/serdarsenturk/spring-distributed-systems",
       demo: "https://github.com/serdarsenturk/spring-distributed-systems",
     },
@@ -30,7 +40,15 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
       title: dictionary.projects.items.javaDistributed.title,
       description: dictionary.projects.items.javaDistributed.description,
       image: "/project-java-microservices.jpg",
-      technologies: ["Java", "J2EE", "RESTful API", "MySQL", "Maven", "Postman", "Git"],
+      technologies: [
+        "Java",
+        "J2EE",
+        "RESTful API",
+        "MySQL",
+        "Maven",
+        "Postman",
+        "Git",
+      ],
       github: "https://github.com/serdarsenturk/java-distributed-systems",
       demo: "https://github.com/serdarsenturk/java-distributed-systems",
     },
@@ -53,7 +71,14 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
       title: dictionary.projects.items.easyRetrospective.title,
       description: dictionary.projects.items.easyRetrospective.description,
       image: "/project-scoreboard.jpg",
-      technologies: ["Python", "JavaScript", "Flask", "PostgreSQL", "NextJS", "Auth0"],
+      technologies: [
+        "Python",
+        "JavaScript",
+        "Flask",
+        "PostgreSQL",
+        "NextJS",
+        "Auth0",
+      ],
       github: "https://github.com/serdarsenturk/easyretrospective",
       demo: "https://github.com/serdarsenturk/easyretrospective",
     },
@@ -77,7 +102,8 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
             {dictionary.projects.title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl leading-relaxed">
-            {dictionary.projects?.subtitle || "A selection of projects showcasing distributed systems, backend development, and full-stack applications. Each project demonstrates different aspects of modern software development."}
+            {dictionary.projects?.subtitle ||
+              "A selection of projects showcasing distributed systems, backend development, and full-stack applications. Each project demonstrates different aspects of modern software development."}
           </p>
         </div>
 
@@ -93,10 +119,13 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
 
               <div className="relative overflow-hidden aspect-video bg-muted/50 rounded-t-xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
-                <img
+                <Image
                   src={project.image || "/placeholder.svg"}
+                  width={400}
+                  height={225}
                   className="object-cover w-full h-full group-hover:scale-115 transition-transform duration-700"
                   alt={project.title}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
@@ -138,7 +167,9 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
                         rel="noopener noreferrer"
                       >
                         <Github className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-all duration-500" />
-                        <span className="relative z-10">{dictionary.projects.buttons.viewCode}</span>
+                        <span className="relative z-10">
+                          {dictionary.projects.buttons.viewCode}
+                        </span>
                       </a>
                     </Button>
                   </div>
@@ -155,7 +186,9 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 group-hover/btn:scale-110 transition-all duration-500" />
-                        <span className="relative z-10">{dictionary.projects.buttons.liveDemo}</span>
+                        <span className="relative z-10">
+                          {dictionary.projects.buttons.liveDemo}
+                        </span>
                       </a>
                     </Button>
                   </div>

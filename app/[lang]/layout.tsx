@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Personal portfolio of Serdar Senturk, a creative developer crafting beautiful digital experiences.",
   icons: {
-    icon: '/favicon.ico',
+    icon: "/favicon.ico",
   },
 };
 
@@ -28,7 +28,7 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }>) {
   return (
     <html

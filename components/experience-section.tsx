@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Briefcase, Calendar } from "lucide-react"
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, Calendar } from "lucide-react";
 
 interface ExperienceSectionProps {
   dictionary: {
@@ -49,15 +49,26 @@ export function ExperienceSection({ dictionary }: ExperienceSectionProps) {
       company: dictionary.experience.companies.piWorks,
       period: "Jun 2022 - Sep 2022",
       description: dictionary.experience.descriptions.intern,
-      technologies: ["ASP.NET Core", "Angular", "NHibernate", "Kubernetes", "Ocelot API Gateway"],
+      technologies: [
+        "ASP.NET Core",
+        "Angular",
+        "NHibernate",
+        "Kubernetes",
+        "Ocelot API Gateway",
+      ],
     },
-  ]
+  ];
 
   return (
-    <section id="experience" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section
+      id="experience"
+      className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30"
+    >
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-3 mb-8 sm:mb-10">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">{dictionary.experience.title}</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+            {dictionary.experience.title}
+          </h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl">
             {dictionary.experience.description}
           </p>
@@ -92,7 +103,7 @@ export function ExperienceSection({ dictionary }: ExperienceSectionProps) {
                 {exp.description}
               </p>
               <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                {exp.technologies.map((tech) => (
+                {exp.technologies.map(tech => (
                   <Badge
                     key={tech}
                     variant="secondary"
@@ -107,5 +118,5 @@ export function ExperienceSection({ dictionary }: ExperienceSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

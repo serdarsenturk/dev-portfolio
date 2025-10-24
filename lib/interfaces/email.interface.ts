@@ -1,4 +1,3 @@
-
 export interface EmailServiceConfig {
   serviceId: string;
   templateId: string;
