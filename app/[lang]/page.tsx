@@ -8,6 +8,7 @@ import { SkillsShowcase } from "@/components/skills-showcase";
 import { ProjectsSection } from "@/components/projects-section";
 import { ContactSection } from "@/components/contact-section";
 import { ScrollObserver } from "@/components/scroll-observer";
+import { LazySection } from "@/components/lazy-section";
 import { getDictionary } from "./dictionaries";
 import type { Locale } from "@/lib/types";
 
@@ -31,13 +32,27 @@ export default async function Home({
       <ScrollObserver />
       <main>
         <HeroSection dictionary={dictionary} />
-        <AboutSection dictionary={dictionary} />
-        <ExperienceSection dictionary={dictionary} />
-        <SkillsShowcase dictionary={dictionary} />
-        <ProjectsSection dictionary={dictionary} />
-        <EducationSection dictionary={dictionary} />
-        <LanguagesSection dictionary={dictionary} />
-        <ContactSection dictionary={dictionary} />
+        <LazySection>
+          <AboutSection dictionary={dictionary} />
+        </LazySection>
+        <LazySection>
+          <ExperienceSection dictionary={dictionary} />
+        </LazySection>
+        <LazySection>
+          <SkillsShowcase dictionary={dictionary} />
+        </LazySection>
+        <LazySection>
+          <ProjectsSection dictionary={dictionary} />
+        </LazySection>
+        <LazySection>
+          <EducationSection dictionary={dictionary} />
+        </LazySection>
+        <LazySection>
+          <LanguagesSection dictionary={dictionary} />
+        </LazySection>
+        <LazySection>
+          <ContactSection dictionary={dictionary} />
+        </LazySection>
       </main>
     </div>
   );
