@@ -2,7 +2,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import type React from "react";
-import type { Locale } from "@/lib/types";
 import "./globals.css";
 
 export const metadata: Metadata = {

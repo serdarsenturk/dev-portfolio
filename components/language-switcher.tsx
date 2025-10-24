@@ -61,8 +61,8 @@ export function LanguageSwitcher() {
 
       // Navigate to new locale
       router.push(newPath);
-    } catch (error) {
-      console.error("Language change error:", error);
+    } catch {
+      // Language change error handled silently
     } finally {
       setIsChanging(false);
     }
