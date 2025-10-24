@@ -4,9 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 import type { Education } from "@/lib/types";
+import type { Dictionary } from "@/lib/types/dictionary.types";
 
 interface EducationSectionProps {
-  dictionary: Record<string, unknown>;
+  dictionary: Dictionary;
 }
 
 export function EducationSection({ dictionary }: EducationSectionProps) {

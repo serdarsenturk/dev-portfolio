@@ -11,10 +11,11 @@ import {
 } from "@/components/ui/card";
 import { ExternalLink, Github } from "lucide-react";
 import type { Project } from "@/lib/types";
+import type { Dictionary } from "@/lib/types/dictionary.types";
 import Image from "next/image";
 
 interface ProjectsSectionProps {
-  dictionary: Record<string, unknown>;
+  dictionary: Dictionary;
 }
 
 export function ProjectsSection({ dictionary }: ProjectsSectionProps) {

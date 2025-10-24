@@ -4,9 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Globe, Star } from "lucide-react";
 import type { Language } from "@/lib/types";
+import type { Dictionary } from "@/lib/types/dictionary.types";
 
 interface LanguagesSectionProps {
-  dictionary: Record<string, unknown>;
+  dictionary: Dictionary;
 }
 
 export function LanguagesSection({ dictionary }: LanguagesSectionProps) {
