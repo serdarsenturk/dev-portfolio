@@ -13,10 +13,12 @@ import { getDictionary } from "./dictionaries";
 import type { Locale } from "@/lib/types";
 
 // Dynamic import for client components
-const Navigation = dynamicImport(() => import("@/components/navigation").then(mod => ({ default: mod.Navigation })));
+const Navigation = dynamicImport(() =>
+  import("@/components/navigation").then(mod => ({ default: mod.Navigation }))
+);
 
 // Force dynamic rendering
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Home({
   params,

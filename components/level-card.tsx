@@ -80,20 +80,30 @@ export function LevelCard({
         <div className="space-y-2">
           <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-200 group-hover:text-slate-800 dark:group-hover:text-white transition-colors duration-300 flex items-center gap-2">
             <Award className="h-4 w-4 text-blue-500 dark:text-blue-400" />
-            {dictionary?.skills?.level || "Level"} {level} {dictionary?.skills?.levelBenefits || "Benefits"}
+            {dictionary?.skills?.level || "Level"} {level}{" "}
+            {dictionary?.skills?.levelBenefits || "Benefits"}
           </h4>
           <div className="grid grid-cols-1 gap-2 text-xs">
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
               <TrendingUp className="h-3 w-3 text-green-500 dark:text-green-400" />
-              <span>{dictionary?.skills?.advancedProblemSolving || "Advanced Problem Solving"}</span>
+              <span>
+                {dictionary?.skills?.advancedProblemSolving ||
+                  "Advanced Problem Solving"}
+              </span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
               <Star className="h-3 w-3 text-yellow-500 dark:text-yellow-400" />
-              <span>{dictionary?.skills?.mentorshipLeadership || "Mentorship & Leadership"}</span>
+              <span>
+                {dictionary?.skills?.mentorshipLeadership ||
+                  "Mentorship & Leadership"}
+              </span>
             </div>
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300">
               <Award className="h-3 w-3 text-purple-500 dark:text-purple-400" />
-              <span>{dictionary?.skills?.architectureDesign || "Architecture & Design"}</span>
+              <span>
+                {dictionary?.skills?.architectureDesign ||
+                  "Architecture & Design"}
+              </span>
             </div>
           </div>
         </div>

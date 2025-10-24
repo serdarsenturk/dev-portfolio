@@ -66,7 +66,7 @@ export function Navigation({ dictionary }: NavigationProps) {
   const handleDownloadCV = () => {
     // Check if we're on client side
     if (typeof window === "undefined") return;
-    
+
     // Get current language from URL or default to 'tr'
     const currentLang = window.location.pathname.includes("/en") ? "en" : "tr";
     const cvFileName =

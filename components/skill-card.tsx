@@ -56,8 +56,10 @@ export function SkillCard({
   const getProficiencyLevel = (level: number) => {
     if (level >= 18) return dictionary?.skills?.proficiency?.master || "Master";
     if (level >= 15) return dictionary?.skills?.proficiency?.expert || "Expert";
-    if (level >= 12) return dictionary?.skills?.proficiency?.advanced || "Advanced";
-    if (level >= 8) return dictionary?.skills?.proficiency?.intermediate || "Intermediate";
+    if (level >= 12)
+      return dictionary?.skills?.proficiency?.advanced || "Advanced";
+    if (level >= 8)
+      return dictionary?.skills?.proficiency?.intermediate || "Intermediate";
     return dictionary?.skills?.proficiency?.beginner || "Beginner";
   };
 

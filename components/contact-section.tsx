@@ -76,7 +76,7 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
   const handleDownloadCV = () => {
     // Check if we're on client side
     if (typeof window === "undefined") return;
-    
+
     // Get current language from URL or default to 'tr'
     const currentLang = window.location.pathname.includes("/en") ? "en" : "tr";
     const cvFileName =
@@ -345,7 +345,9 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                         id="name"
                         placeholder={dictionary.contact.form.placeholder}
                         value={formData.name}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(
+                          event: React.ChangeEvent<HTMLInputElement>
+                        ) =>
                           setFormData({ ...formData, name: event.target.value })
                         }
                         className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
@@ -366,7 +368,9 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                         type="email"
                         placeholder={dictionary.contact.emailPlaceholder}
                         value={formData.email}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange={(
+                          event: React.ChangeEvent<HTMLInputElement>
+                        ) =>
                           setFormData({
                             ...formData,
                             email: event.target.value,
@@ -391,7 +395,9 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       placeholder={dictionary.contact.messagePlaceholder}
                       rows={3}
                       value={formData.message}
-                      onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      onChange={(
+                        event: React.ChangeEvent<HTMLTextAreaElement>
+                      ) =>
                         setFormData({
                           ...formData,
                           message: event.target.value,
@@ -402,12 +408,12 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       disabled={isSubmitting}
                     />
                   </div>
-                <Button
-                  type="submit"
-                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={isSubmitting}
-                  aria-label="Send contact message"
-                >
+                  <Button
+                    type="submit"
+                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isSubmitting}
+                    aria-label="Send contact message"
+                  >
                     {isSubmitting ? (
                       <>
                         <div className="h-4 w-4 mr-2 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

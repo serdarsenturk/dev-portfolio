@@ -9,7 +9,13 @@ interface LazySectionProps {
 
 export function LazySection({ children, fallback }: LazySectionProps) {
   return (
-    <Suspense fallback={fallback || <div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-32 rounded-lg" />}>
+    <Suspense
+      fallback={
+        fallback || (
+          <div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-32 rounded-lg" />
+        )
+      }
+    >
       {children}
     </Suspense>
   );

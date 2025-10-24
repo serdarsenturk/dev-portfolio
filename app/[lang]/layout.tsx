@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: {
     default: "Serdar Senturk - Full Stack Developer",
-    template: "%s | Serdar Senturk"
+    template: "%s | Serdar Senturk",
   },
   description:
     "Full Stack Developer with 3+ years experience in .NET Core, Java, Spring Boot, Next.js, and React Native. Building robust backend solutions and modern web applications.",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Frontend Developer",
     "TypeScript",
     "Microservices",
-    "Portfolio"
+    "Portfolio",
   ],
   authors: [{ name: "Serdar Senturk" }],
   creator: "Serdar Senturk",
@@ -44,7 +44,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://serdarsenturk.dev",
     title: "Serdar Senturk - Full Stack Developer",
-    description: "Full Stack Developer with 3+ years experience in .NET Core, Java, Spring Boot, Next.js, and React Native.",
+    description:
+      "Full Stack Developer with 3+ years experience in .NET Core, Java, Spring Boot, Next.js, and React Native.",
     siteName: "Serdar Senturk Portfolio",
     images: [
       {
@@ -58,7 +59,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Serdar Senturk - Full Stack Developer",
-    description: "Full Stack Developer with 3+ years experience in .NET Core, Java, Spring Boot, Next.js, and React Native.",
+    description:
+      "Full Stack Developer with 3+ years experience in .NET Core, Java, Spring Boot, Next.js, and React Native.",
     images: ["/profile-photo.jpg"],
   },
   icons: {
