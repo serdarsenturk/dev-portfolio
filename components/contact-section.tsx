@@ -3,7 +3,6 @@
 import type React from "react";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,7 +11,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  MessageSquare,
   Phone,
   Send,
   AlertCircle,
@@ -111,7 +109,7 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
         throw new Error(result.error || "Failed to send email");
       }
     } catch (error) {
-      console.error("Email send error:", error);
+      // Email send error handled by state
       setIsError(true);
       setErrorMessage(
         error instanceof Error
@@ -347,7 +345,7 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                         id="name"
                         placeholder={dictionary.contact.form.placeholder}
                         value={formData.name}
-                        onChange={(event: any) =>
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                           setFormData({ ...formData, name: event.target.value })
                         }
                         className="h-10 px-4 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 shadow-sm"
@@ -368,7 +366,7 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                         type="email"
                         placeholder={dictionary.contact.emailPlaceholder}
                         value={formData.email}
-                        onChange={(event: any) =>
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                           setFormData({
                             ...formData,
                             email: event.target.value,
@@ -393,7 +391,7 @@ export function ContactSection({ dictionary }: ContactSectionProps) {
                       placeholder={dictionary.contact.messagePlaceholder}
                       rows={3}
                       value={formData.message}
-                      onChange={(event: any) =>
+                      onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
                         setFormData({
                           ...formData,
                           message: event.target.value,

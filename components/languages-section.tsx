@@ -6,7 +6,7 @@ import { Globe, Star } from "lucide-react";
 import type { Language } from "@/lib/types";
 
 interface LanguagesSectionProps {
-  dictionary: any;
+  dictionary: Record<string, unknown>;
 }
 
 export function LanguagesSection({ dictionary }: LanguagesSectionProps) {

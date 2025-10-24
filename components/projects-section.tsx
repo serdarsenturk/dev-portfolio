@@ -14,7 +14,7 @@ import type { Project } from "@/lib/types";
 import Image from "next/image";
 
 interface ProjectsSectionProps {
-  dictionary: any;
+  dictionary: Record<string, unknown>;
 }
 
 export function ProjectsSection({ dictionary }: ProjectsSectionProps) {

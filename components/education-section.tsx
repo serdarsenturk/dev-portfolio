@@ -6,7 +6,7 @@ import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
 import type { Education } from "@/lib/types";
 
 interface EducationSectionProps {
-  dictionary: any;
+  dictionary: Record<string, unknown>;
 }
 
 export function EducationSection({ dictionary }: EducationSectionProps) {
