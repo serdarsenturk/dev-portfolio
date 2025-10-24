@@ -13,7 +13,7 @@ export interface EmailData {
 export interface EmailServiceResult {
   success: boolean;
   error?: string;
-  result?: any;
+  result?: unknown;
 }
 
 export interface IEmailService {
