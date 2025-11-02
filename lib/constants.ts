@@ -1,31 +1,29 @@
-import type {
-  AnimationDelays,
-  ScrollBehavior,
-  SectionIds,
-  DeveloperInfo,
-  NavigationItem,
-  ContactOption,
-  CharacterSheet,
-} from "./types";
 import {
   Brain,
-  Zap,
-  Shield,
-  Heart,
-  Eye,
-  Users,
-  Code,
-  Database,
-  GitBranch,
-  Layers,
-  Cpu,
-  Server,
-  Monitor,
   Cloud,
-  GitCommit,
+  Code,
   Container,
+  Database,
+  Eye,
+  GitBranch,
+  Heart,
+  Layers,
+  Monitor,
   Network,
+  Server,
+  Shield,
+  Users,
+  Zap,
 } from "lucide-react";
+import type {
+  AnimationDelays,
+  CharacterSheet,
+  ContactOption,
+  DeveloperInfo,
+  NavigationItem,
+  ScrollBehavior,
+  SectionIds,
+} from "./types";
 
 // Animation and timing constants
 export const ANIMATION_DELAYS: AnimationDelays = {
@@ -315,7 +313,7 @@ export const CHARACTER_DATA: CharacterSheet = {
       icon: Zap,
       isProficient: true,
       bonus: 1,
-    }
+    },
   ],
 
   class: {
