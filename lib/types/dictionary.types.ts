@@ -70,6 +70,10 @@ export interface Dictionary {
       liveDemo: string;
     };
     items: {
+      breakaway: {
+        title: string;
+        description: string;
+      };
       springDistributed: {
         title: string;
         description: string;

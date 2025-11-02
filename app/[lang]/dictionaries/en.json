@@ -145,6 +145,10 @@
       "liveDemo": "Live Demo"
     },
     "items": {
+      "breakaway": {
+  "title": "Breakaway - Trip Planner",
+          "description": "Breakaway is a comprehensive cross-platform application that transforms your road trips into unforgettable adventures by discovering interesting places, restaurants, and events along your route."
+      },
       "springDistributed": {
         "title": "Spring Distributed Systems",
         "description": "Movie Rating System implementation with Distributed Systems using Spring framework, RabbitMQ for messaging, and Redis for caching. Containerized with Docker. Applied Agile methodology and involved in all SDLC phases."

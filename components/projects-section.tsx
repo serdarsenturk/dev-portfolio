@@ -21,6 +21,27 @@ interface ProjectsSectionProps {
 export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
   const PROJECT_DATA: Project[] = [
     {
+      title: dictionary.projects.items.breakaway.title,
+      description: dictionary.projects.items.breakaway.description,
+      image: "/breakaway.png",
+      technologies: [
+        "C#",
+        ".NET Core",
+        "Angular",
+        "PostgreSQL",
+        "Docker",
+        "RabbitMQ",
+        "Redis",
+        "Microservices",
+        "Azure",
+        "SignalR",
+        "IoT",
+        "REST API",
+      ],
+      github: "https://gitlab.com/innovators-projects/breakaway",
+      demo: "https://gitlab.com/innovators-projects/breakaway",
+    },
+    {
       title: dictionary.projects.items.springDistributed.title,
       description: dictionary.projects.items.springDistributed.description,
       image: "/project-spring-boot.jpg",
@@ -115,6 +136,15 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
               className="overflow-hidden transition-all duration-700 hover:-translate-y-4 animate-fade-in-up group relative border-primary/20 bg-white/90 dark:bg-card/60 backdrop-blur-xl hover:border-primary/40"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
+              {/* Ongoing badge for Breakaway */}
+              {project.title.toLowerCase().includes("breakaway") && (
+                <div className="absolute top-4 right-4 z-20">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-orange-100 text-orange-700 border border-orange-300 shadow-sm animate-pulse">
+                    Ongoing
+                  </span>
+                </div>
+              )}
+
               <div className="absolute -inset-[2px] bg-gradient-to-r from-primary via-accent to-primary rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-700 -z-10 animate-gradient bg-[length:200%_auto]" />
               <div className="absolute -inset-[2px] bg-gradient-to-r from-primary via-accent to-primary rounded-xl opacity-0 group-hover:opacity-60 transition-all duration-700 -z-10" />
 
@@ -167,7 +197,15 @@ export function ProjectsSection({ dictionary }: ProjectsSectionProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Github className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-all duration-500" />
+                        {project.title.toLowerCase().includes("breakaway") ? (
+                          <img
+                            src="/gitlab-logo.svg"
+                            alt="GitLab"
+                            className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10"
+                          />
+                        ) : (
+                          <Github className="h-4 w-4 sm:h-5 sm:w-5 mr-2 relative z-10 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-all duration-500" />
+                        )}
                         <span className="relative z-10">
                           {dictionary.projects.buttons.viewCode}
                         </span>

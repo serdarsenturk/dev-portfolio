@@ -145,6 +145,10 @@
       "liveDemo": "Canlı Demo"
     },
     "items": {
+      "breakaway": {
+  "title": "Breakaway - Yolculuk Planlayıcı",
+          "description": "Breakaway, yolculuklarınızı unutulmaz maceralara dönüştüren; rotanız üzerindeki ilginç yerleri, restoranları ve etkinlikleri keşfetmenizi sağlayan kapsamlı bir çapraz platform uygulamasıdır."
+      },
       "springDistributed": {
         "title": "Spring Dağıtık Sistemler",
         "description": "Spring framework kullanarak dağıtık sistemler ile film değerlendirme sistemi uygulaması. RabbitMQ mesajlaşma ve Redis önbellekleme kullanıldı. Docker ile konteynerize edildi. Agile metodolojisi uygulandı ve tüm SDLC aşamalarında yer alındı."
